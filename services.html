@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Services — SecureShield Insurance</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--navy:#0a1f44;--royal:#1e40af;--blue:#2563eb;--sky:#38bdf8;--gray:#64748b;--grad:linear-gradient(135deg,#0a1f44,#1e40af,#2563eb);--grad2:linear-gradient(135deg,#38bdf8,#1e40af);--shadow:0 20px 60px rgba(10,31,68,.15)}
+html{scroll-behavior:smooth}body{background:#f8fafc;color:#0f172a;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+#loader{position:fixed;inset:0;background:var(--grad);display:flex;align-items:center;justify-content:center;z-index:9999;transition:.6s}
+#loader.hide{opacity:0;visibility:hidden}
+.spinner{width:70px;height:70px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#progress{position:fixed;top:0;left:0;height:4px;background:var(--grad2);width:0;z-index:9998}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.3);transition:.3s}
+.nav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 4px 30px rgba(0,0,0,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--navy)}
+.logo i{background:var(--grad);color:#fff;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px}
+.menu{display:flex;gap:32px;list-style:none}
+.menu a{font-weight:500;color:#0f172a;position:relative;padding:6px 0;transition:.3s}
+.menu a:hover,.menu a.active{color:var(--royal)}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--grad2);transition:.3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.nav-btns{display:flex;gap:12px;align-items:center}
+.btn{padding:10px 22px;border-radius:10px;font-weight:600;cursor:pointer;border:none;transition:.3s;display:inline-flex;align-items:center;gap:8px;font-size:14px}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 20px rgba(30,64,175,.3)}
+.btn-primary:hover{transform:translateY(-2px)}
+.hamburger{display:none;font-size:24px;color:var(--navy);cursor:pointer;background:none;border:none}
+
+.page-hero{padding:160px 0 80px;background:var(--grad);color:#fff;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(56,189,248,.25),transparent 60%)}
+.page-hero h1{position:relative;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;margin-bottom:14px}
+.page-hero p{position:relative;opacity:.9;max-width:640px;margin:0 auto}
+.crumbs{position:relative;margin-top:18px;font-size:14px;opacity:.85}
+
+section{padding:80px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 50px}
+.tag{display:inline-block;padding:6px 16px;background:rgba(37,99,235,.1);color:var(--royal);border-radius:30px;font-size:13px;font-weight:600;margin-bottom:14px}
+.section-head h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin-bottom:12px}
+.section-head p{color:var(--gray)}
+
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.serv{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:.4s;border:1px solid #e2e8f0;position:relative}
+.serv:hover{transform:translateY(-12px);box-shadow:0 30px 60px rgba(30,64,175,.25)}
+.serv .img-wrap{position:relative;height:220px;overflow:hidden}
+.serv .img-wrap img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.serv:hover .img-wrap img{transform:scale(1.08)}
+.serv .img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,31,68,.6),transparent 60%)}
+.serv .ic-float{position:absolute;bottom:-25px;right:24px;width:60px;height:60px;background:var(--grad);color:#fff;border-radius:18px;display:grid;place-items:center;font-size:24px;box-shadow:var(--shadow);z-index:2}
+.serv-body{padding:32px 26px 26px}
+.serv-body h3{color:var(--navy);font-size:1.35rem;margin-bottom:10px}
+.serv-body p{color:var(--gray);line-height:1.7;font-size:14.5px;margin-bottom:18px}
+.serv-body ul{list-style:none;margin-bottom:20px}
+.serv-body ul li{padding:5px 0;color:#334155;font-size:14px;display:flex;align-items:center;gap:8px}
+.serv-body ul li i{color:#10b981;font-size:13px}
+.learn{color:var(--royal);font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:.3s}
+.learn:hover{gap:14px}
+
+.benefits{background:linear-gradient(180deg,#f8fafc,#eff6ff)}
+.ben-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.ben{background:#fff;padding:30px;border-radius:18px;border:1px solid #e2e8f0;transition:.3s}
+.ben:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--blue)}
+.ben i{font-size:34px;color:var(--royal);margin-bottom:14px}
+.ben h4{color:var(--navy);margin-bottom:8px}
+.ben p{color:var(--gray);font-size:14px;line-height:1.6}
+
+.cta-box{background:linear-gradient(135deg,#0a1f44,#1e40af);border-radius:30px;padding:60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(circle,rgba(56,189,248,.2),transparent 60%)}
+.cta-box h2{position:relative;font-size:2.2rem;margin-bottom:14px}
+.cta-box p{position:relative;margin-bottom:24px;opacity:.9}
+.cta-box .btn{position:relative}
+.btn-white{background:#fff;color:var(--navy)}
+
+footer{background:#0a1428;color:rgba(255,255,255,.7);padding:70px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-col h4{color:#fff;margin-bottom:18px}
+.foot-col ul{list-style:none}.foot-col ul li{padding:6px 0}
+.foot-col ul li a:hover{color:#38bdf8}
+.foot-col p{line-height:1.7;margin-bottom:14px;font-size:14.5px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;transition:.3s}
+.socials a:hover{background:var(--grad)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;text-align:center;font-size:14px}
+#totop{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--grad);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:999}
+#totop.show{opacity:1;visibility:visible}
+
+@media(max-width:980px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+.menu{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:30px;gap:20px;box-shadow:var(--shadow);transform:translateY(-150%);transition:.4s}
+.menu.open{transform:translateY(0)}.hamburger{display:block}.nav-btns .btn-ghost{display:none}
+.foot-grid{grid-template-columns:1fr}section{padding:60px 0}.cta-box{padding:40px 24px}}
+</style></head><body>
+<div id="loader"><div class="spinner"></div></div><div id="progress"></div>
+<nav class="nav" id="nav"><div class="container nav-inner">
+<a href="index.html" class="logo"><i class="fas fa-shield-halved"></i> SecureShield</a>
+<ul class="menu" id="menu">
+<li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+<li><a href="services.html" class="active">Services</a></li><li><a href="plans.html">Plans</a></li>
+<li><a href="claims.html">Claims</a></li><li><a href="contact.html">Contact</a></li></ul>
+<div class="nav-btns"><a href="login.html" class="btn btn-ghost">Login</a><a href="signup.html" class="btn btn-primary">Sign Up</a>
+<button class="hamburger" id="ham"><i class="fas fa-bars"></i></button></div></div></nav>
+
+<header class="page-hero"><div class="container">
+<h1>Our Insurance Services</h1>
+<p>Comprehensive protection across every part of your life and business.</p>
+<div class="crumbs"><a href="index.html">Home</a> / Services</div></div></header>
+
+<section><div class="container">
+<div class="section-head" data-aos="fade-up"><span class="tag">What We Offer</span><h2>Coverage for Every Need</h2><p>Choose from six premium categories — each tailored, transparent, and trusted.</p></div>
+<div class="serv-grid">
+
+<div class="serv" data-aos="fade-up"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1605119952723-cfae0c3f8d49?w=800" alt="Life Insurance"><div class="ic-float"><i class="fas fa-user-shield"></i></div></div>
+<div class="serv-body"><h3>Life Insurance</h3><p>Secure your family's financial future with comprehensive life coverage.</p>
+<ul><li><i class="fas fa-check"></i> Term & Whole Life Plans</li><li><i class="fas fa-check"></i> Up to ₹2 Cr Coverage</li><li><i class="fas fa-check"></i> Tax Benefits 80C</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+<div class="serv" data-aos="fade-up" data-aos-delay="100"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800" alt="Health Insurance"><div class="ic-float"><i class="fas fa-heart-pulse"></i></div></div>
+<div class="serv-body"><h3>Health Insurance</h3><p>Cashless treatment at 500+ hospitals across India for you and your family.</p>
+<ul><li><i class="fas fa-check"></i> Family Floater Plans</li><li><i class="fas fa-check"></i> Cashless at 500+ Hospitals</li><li><i class="fas fa-check"></i> Pre & Post Hospitalization</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+<div class="serv" data-aos="fade-up" data-aos-delay="200"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800" alt="Vehicle Insurance"><div class="ic-float"><i class="fas fa-car"></i></div></div>
+<div class="serv-body"><h3>Vehicle Insurance</h3><p>Complete protection for your car & bike against accidents, theft and natural disasters.</p>
+<ul><li><i class="fas fa-check"></i> Third Party + Comprehensive</li><li><i class="fas fa-check"></i> Zero Depreciation Cover</li><li><i class="fas fa-check"></i> 24/7 Roadside Assistance</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+<div class="serv" data-aos="fade-up"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800" alt="Travel Insurance"><div class="ic-float"><i class="fas fa-plane"></i></div></div>
+<div class="serv-body"><h3>Travel Insurance</h3><p>Stay protected on every trip — domestic or international — with global coverage.</p>
+<ul><li><i class="fas fa-check"></i> Medical Emergency Cover</li><li><i class="fas fa-check"></i> Lost Baggage Protection</li><li><i class="fas fa-check"></i> Trip Cancellation</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+<div class="serv" data-aos="fade-up" data-aos-delay="100"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800" alt="Home Insurance"><div class="ic-float"><i class="fas fa-house-chimney"></i></div></div>
+<div class="serv-body"><h3>Home Insurance</h3><p>Comprehensive protection for your home, valuables and personal belongings.</p>
+<ul><li><i class="fas fa-check"></i> Building + Contents Cover</li><li><i class="fas fa-check"></i> Natural Disaster Protection</li><li><i class="fas fa-check"></i> Burglary & Theft Cover</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+<div class="serv" data-aos="fade-up" data-aos-delay="200"><div class="img-wrap"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800" alt="Business Insurance"><div class="ic-float"><i class="fas fa-briefcase"></i></div></div>
+<div class="serv-body"><h3>Business Insurance</h3><p>Enterprise-grade coverage to protect your business, employees and operations.</p>
+<ul><li><i class="fas fa-check"></i> Group Health & Life</li><li><i class="fas fa-check"></i> Liability Insurance</li><li><i class="fas fa-check"></i> Property & Asset Cover</li></ul>
+<a href="plans.html" class="learn">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+
+</div></div></section>
+
+<section class="benefits"><div class="container">
+<div class="section-head" data-aos="fade-up"><span class="tag">Why Our Services</span><h2>Built Around You</h2></div>
+<div class="ben-grid">
+<div class="ben" data-aos="fade-up"><i class="fas fa-bolt"></i><h4>Instant Issuance</h4><p>Get your policy issued in under 2 minutes.</p></div>
+<div class="ben" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-shield-halved"></i><h4>IRDAI Approved</h4><p>All plans regulated and government-backed.</p></div>
+<div class="ben" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-headset"></i><h4>24/7 Support</h4><p>Expert assistance whenever you need it.</p></div>
+<div class="ben" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-tags"></i><h4>Best Premium</h4><p>Lowest price guarantee with extra discounts.</p></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="cta-box" data-aos="zoom-in">
+<h2>Not Sure Which Service Fits You?</h2>
+<p>Our experts will guide you to the right policy in minutes.</p>
+<a href="contact.html" class="btn btn-white">Talk to an Expert <i class="fas fa-arrow-right"></i></a></div></div></section>
+
+<footer><div class="container">
+<div class="foot-grid">
+<div class="foot-col"><div class="logo" style="color:#fff;margin-bottom:14px"> STACKLY</div>
+<p>India's most trusted insurance platform protecting millions of families.</p>
+<div class="socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+<div class="foot-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="plans.html">Plans</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div class="foot-col"><h4>Insurance</h4><ul><li><a href="#">Health</a></li><li><a href="#">Life</a></li><li><a href="#">Motor</a></li><li><a href="#">Travel</a></li></ul></div>
+<div class="foot-col"><h4>Support</h4><ul><li><a href="claims.html">Claims</a></li><li><a href="#">Help</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div></div>
+<div class="foot-bot">© 2025 SecureShield Insurance. All rights reserved.</div></div></footer>
+<button id="totop"><i class="fas fa-arrow-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hide'),400);AOS.init({duration:800,once:true})});
+const nav=document.getElementById('nav'),progress=document.getElementById('progress'),totop=document.getElementById('totop');
+window.addEventListener('scroll',()=>{const y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(y/h*100)+'%';nav.classList.toggle('scrolled',y>40);totop.classList.toggle('show',y>400)});
+totop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById('ham').onclick=()=>document.getElementById('menu').classList.toggle('open');
+</script></body></html>

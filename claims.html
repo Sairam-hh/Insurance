@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claims Process — SecureShield Insurance</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--navy:#0a1f44;--royal:#1e40af;--blue:#2563eb;--sky:#38bdf8;--gray:#64748b;--grad:linear-gradient(135deg,#0a1f44,#1e40af,#2563eb);--grad2:linear-gradient(135deg,#38bdf8,#1e40af);--shadow:0 20px 60px rgba(10,31,68,.15)}
+html{scroll-behavior:smooth}body{background:#f8fafc;color:#0f172a;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+#loader{position:fixed;inset:0;background:var(--grad);display:flex;align-items:center;justify-content:center;z-index:9999;transition:.6s}
+#loader.hide{opacity:0;visibility:hidden}
+.spinner{width:70px;height:70px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#progress{position:fixed;top:0;left:0;height:4px;background:var(--grad2);width:0;z-index:9998}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.3);transition:.3s}
+.nav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 4px 30px rgba(0,0,0,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--navy)}
+.logo i{background:var(--grad);color:#fff;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px}
+.menu{display:flex;gap:32px;list-style:none}
+.menu a{font-weight:500;color:#0f172a;position:relative;padding:6px 0;transition:.3s}
+.menu a:hover,.menu a.active{color:var(--royal)}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--grad2);transition:.3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.nav-btns{display:flex;gap:12px;align-items:center}
+.btn{padding:10px 22px;border-radius:10px;font-weight:600;cursor:pointer;border:none;transition:.3s;display:inline-flex;align-items:center;gap:8px;font-size:14px}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 20px rgba(30,64,175,.3)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--navy)}
+.hamburger{display:none;font-size:24px;color:var(--navy);cursor:pointer;background:none;border:none}
+
+.page-hero{padding:160px 0 80px;background:var(--grad);color:#fff;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(56,189,248,.25),transparent 60%)}
+.page-hero h1{position:relative;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;margin-bottom:14px}
+.page-hero p{position:relative;opacity:.9;max-width:640px;margin:0 auto}
+.crumbs{position:relative;margin-top:18px;font-size:14px;opacity:.85}
+
+section{padding:80px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 50px}
+.tag{display:inline-block;padding:6px 16px;background:rgba(37,99,235,.1);color:var(--royal);border-radius:30px;font-size:13px;font-weight:600;margin-bottom:14px}
+.section-head h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin-bottom:12px}
+.section-head p{color:var(--gray)}
+
+/* Process timeline horizontal */
+.process{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.process::before{content:'';position:absolute;top:48px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,#38bdf8,#1e40af);z-index:0}
+.pstep{position:relative;background:#fff;padding:30px 24px;border-radius:20px;box-shadow:var(--shadow);text-align:center;z-index:1;border-top:4px solid var(--blue);transition:.3s}
+.pstep:hover{transform:translateY(-8px)}
+.pstep .num{width:60px;height:60px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.4rem;margin:0 auto 16px;box-shadow:0 8px 20px rgba(30,64,175,.4)}
+.pstep i{font-size:34px;color:var(--royal);margin-bottom:12px}
+.pstep h4{color:var(--navy);margin-bottom:8px}
+.pstep p{color:var(--gray);font-size:14px;line-height:1.6}
+
+.bar-section{background:linear-gradient(180deg,#f8fafc,#eff6ff)}
+.bar-wrap{max-width:700px;margin:0 auto}
+.bar{margin-bottom:24px}
+.bar-head{display:flex;justify-content:space-between;margin-bottom:8px;color:var(--navy);font-weight:600}
+.bar-bg{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden}
+.bar-fill{height:100%;background:var(--grad2);width:0;border-radius:10px;transition:width 1.5s ease}
+
+.illus{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.illus img{border-radius:24px;box-shadow:var(--shadow)}
+.illus h2{font-size:2rem;color:var(--navy);margin-bottom:14px}
+.illus p{color:var(--gray);line-height:1.8;margin-bottom:14px}
+.illus ul{list-style:none;margin-top:16px}
+.illus ul li{padding:8px 0;display:flex;gap:10px;align-items:center;color:#334155}
+.illus ul li i{color:#10b981;background:rgba(16,185,129,.12);width:28px;height:28px;border-radius:50%;display:grid;place-items:center}
+
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.doc{background:#fff;padding:24px;border-radius:18px;text-align:center;border:1px solid #e2e8f0;transition:.3s}
+.doc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.doc i{font-size:34px;color:var(--royal);margin-bottom:10px}
+.doc h5{color:var(--navy);margin-bottom:4px}
+.doc p{color:var(--gray);font-size:13px}
+
+.cta-box{background:linear-gradient(135deg,#0a1f44,#1e40af);border-radius:30px;padding:60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(circle,rgba(56,189,248,.2),transparent 60%)}
+.cta-box h2{position:relative;font-size:2.2rem;margin-bottom:14px}
+.cta-box p{position:relative;margin-bottom:24px;opacity:.9}
+.cta-box .btn{position:relative}
+
+footer{background:#0a1428;color:rgba(255,255,255,.7);padding:70px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-col h4{color:#fff;margin-bottom:18px}
+.foot-col ul{list-style:none}.foot-col ul li{padding:6px 0}
+.foot-col ul li a:hover{color:#38bdf8}
+.foot-col p{line-height:1.7;margin-bottom:14px;font-size:14.5px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;transition:.3s}
+.socials a:hover{background:var(--grad)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;text-align:center;font-size:14px}
+#totop{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--grad);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:999}
+#totop.show{opacity:1;visibility:visible}
+
+@media(max-width:980px){.process{grid-template-columns:1fr 1fr}.process::before{display:none}.illus{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+.menu{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:30px;gap:20px;box-shadow:var(--shadow);transform:translateY(-150%);transition:.4s}
+.menu.open{transform:translateY(0)}.hamburger{display:block}.nav-btns .btn-ghost{display:none}
+.process{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}section{padding:60px 0}.cta-box{padding:40px 24px}}
+</style></head><body>
+<div id="loader"><div class="spinner"></div></div><div id="progress"></div>
+<nav class="nav" id="nav"><div class="container nav-inner">
+<a href="index.html" class="logo"> STACKLY</a>
+<ul class="menu" id="menu">
+<li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+<li><a href="services.html">Services</a></li><li><a href="plans.html">Plans</a></li>
+<li><a href="claims.html" class="active">Claims</a></li><li><a href="contact.html">Contact</a></li></ul>
+<div class="nav-btns"><a href="login.html" class="btn btn-ghost">Login</a><a href="signup.html" class="btn btn-primary">Sign Up</a>
+<button class="hamburger" id="ham"><i class="fas fa-bars"></i></button></div></div></nav>
+
+<header class="page-hero"><div class="container">
+<h1>Easy Claims, Faster Settlement</h1>
+<p>Our hassle-free 4-step claim process gets you paid within 24 hours.</p>
+<div class="crumbs"><a href="index.html">Home</a> / Claims</div></div></header>
+
+<section><div class="container">
+<div class="section-head" data-aos="fade-up"><span class="tag">Process</span><h2>How Claims Work</h2><p>Four simple steps. Zero confusion.</p></div>
+<div class="process">
+<div class="pstep" data-aos="fade-up"><div class="num">1</div><i class="fas fa-file-pen"></i><h4>Claim Registration</h4><p>Register your claim online in under 2 minutes.</p></div>
+<div class="pstep" data-aos="fade-up" data-aos-delay="100"><div class="num">2</div><i class="fas fa-file-shield"></i><h4>Document Verification</h4><p>Upload docs — we verify them in 4-6 hours.</p></div>
+<div class="pstep" data-aos="fade-up" data-aos-delay="200"><div class="num">3</div><i class="fas fa-circle-check"></i><h4>Approval</h4><p>Approval within 24 hours of submission.</p></div>
+<div class="pstep" data-aos="fade-up" data-aos-delay="300"><div class="num">4</div><i class="fas fa-hand-holding-dollar"></i><h4>Settlement</h4><p>Amount credited to your account instantly.</p></div>
+</div></div></section>
+
+<section class="bar-section"><div class="container">
+<div class="section-head" data-aos="fade-up"><span class="tag">Performance</span><h2>Our Claim Track Record</h2></div>
+<div class="bar-wrap" data-aos="fade-up">
+<div class="bar"><div class="bar-head"><span>Claim Approval Rate</span><span>99%</span></div><div class="bar-bg"><div class="bar-fill" data-fill="99"></div></div></div>
+<div class="bar"><div class="bar-head"><span>Settlement Within 24h</span><span>94%</span></div><div class="bar-bg"><div class="bar-fill" data-fill="94"></div></div></div>
+<div class="bar"><div class="bar-head"><span>Customer Satisfaction</span><span>98%</span></div><div class="bar-bg"><div class="bar-fill" data-fill="98"></div></div></div>
+<div class="bar"><div class="bar-head"><span>Cashless Hospital Network</span><span>92%</span></div><div class="bar-bg"><div class="bar-fill" data-fill="92"></div></div></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="illus">
+<div data-aos="fade-right"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900" alt=""></div>
+<div data-aos="fade-left"><span class="tag">Why Choose Us</span>
+<h2>The Fastest Claim Settlement in India</h2>
+<p>We've built the entire claim experience around speed, transparency and empathy. Real humans, real care.</p>
+<ul>
+<li><i class="fas fa-check"></i> 100% paperless claim submission</li>
+<li><i class="fas fa-check"></i> AI-powered instant approvals</li>
+<li><i class="fas fa-check"></i> Real-time claim status tracking</li>
+<li><i class="fas fa-check"></i> Dedicated claim manager</li>
+</ul></div></div></div></section>
+
+<section class="bar-section"><div class="container">
+<div class="section-head" data-aos="fade-up"><span class="tag">Documents</span><h2>What You'll Need</h2></div>
+<div class="docs-grid">
+<div class="doc" data-aos="zoom-in"><i class="fas fa-id-card"></i><h5>ID Proof</h5><p>Aadhaar / PAN</p></div>
+<div class="doc" data-aos="zoom-in" data-aos-delay="80"><i class="fas fa-file-medical"></i><h5>Medical Reports</h5><p>Hospital documents</p></div>
+<div class="doc" data-aos="zoom-in" data-aos-delay="160"><i class="fas fa-receipt"></i><h5>Bills & Invoices</h5><p>Original receipts</p></div>
+<div class="doc" data-aos="zoom-in" data-aos-delay="240"><i class="fas fa-file-contract"></i><h5>Policy Documents</h5><p>Active policy copy</p></div>
+</div></div></section>
+
+<section><div class="container">
+<div class="cta-box" data-aos="zoom-in">
+<h2>Need to File a Claim?</h2>
+<p>Our team is ready to help you 24/7. Start your claim now.</p>
+<a href="login.html" class="btn btn-white">File a Claim <i class="fas fa-arrow-right"></i></a></div></div></section>
+
+<footer><div class="container">
+<div class="foot-grid">
+<div class="foot-col"><div class="logo" style="color:#fff;margin-bottom:14px"> STACKLY</div>
+<p>India's most trusted insurance platform.</p>
+<div class="socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+<div class="foot-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="plans.html">Plans</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+<div class="foot-col"><h4>Insurance</h4><ul><li><a href="#">Health</a></li><li><a href="#">Life</a></li><li><a href="#">Motor</a></li><li><a href="#">Travel</a></li></ul></div>
+<div class="foot-col"><h4>Support</h4><ul><li><a href="claims.html">Claims</a></li><li><a href="#">Help</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div></div>
+<div class="foot-bot">© 2025 SecureShield Insurance. All rights reserved.</div></div></footer>
+<button id="totop"><i class="fas fa-arrow-up"></i></button>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hide'),400);AOS.init({duration:800,once:true})});
+const nav=document.getElementById('nav'),progress=document.getElementById('progress'),totop=document.getElementById('totop');
+window.addEventListener('scroll',()=>{const y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(y/h*100)+'%';nav.classList.toggle('scrolled',y>40);totop.classList.toggle('show',y>400)});
+totop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+document.getElementById('ham').onclick=()=>document.getElementById('menu').classList.toggle('open');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.style.width=el.dataset.fill+'%';io.unobserve(el)}}));
+document.querySelectorAll('.bar-fill').forEach(b=>io.observe(b));
+</script></body></html>

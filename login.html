@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login — SecureShield</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--navy:#0a1f44;--royal:#1e40af;--blue:#2563eb;--sky:#38bdf8;--gray:#64748b;--grad:linear-gradient(135deg,#0a1f44,#1e40af,#2563eb);--shadow:0 30px 80px rgba(10,31,68,.25)}
+body{min-height:100vh;background:var(--grad);display:flex;align-items:center;justify-content:center;padding:20px;color:#0f172a;position:relative;overflow:hidden}
+.shape{position:absolute;border-radius:50%;background:rgba(255,255,255,.07);filter:blur(40px);animation:f 8s infinite}
+.shape.a{width:400px;height:400px;top:-100px;left:-100px}
+.shape.b{width:300px;height:300px;bottom:-80px;right:-80px;animation-delay:2s}
+@keyframes f{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+a{text-decoration:none;color:inherit}
+
+.wrap{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:1000px;background:#fff;border-radius:28px;box-shadow:var(--shadow);overflow:hidden;position:relative;z-index:1}
+.side{background:linear-gradient(135deg,#0a1f44,#1e40af);color:#fff;padding:50px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.side::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:160%;background:radial-gradient(circle,rgba(56,189,248,.25),transparent 60%)}
+.side .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;margin-bottom:30px;position:relative}
+.side .logo i{background:rgba(255,255,255,.18);color:#fff;width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.side h2{font-size:2rem;font-weight:800;margin-bottom:14px;position:relative}
+.side p{opacity:.85;line-height:1.7;margin-bottom:24px;position:relative}
+.side ul{list-style:none;position:relative}
+.side ul li{padding:8px 0;display:flex;gap:10px;align-items:center;font-size:14.5px;opacity:.92}
+.side ul li i{color:#86efac}
+
+.form{padding:50px 44px}
+.back{font-size:13px;color:var(--gray);margin-bottom:16px;display:inline-flex;align-items:center;gap:6px}
+.back:hover{color:var(--royal)}
+.form h1{font-size:1.8rem;color:var(--navy);margin-bottom:6px}
+.form>p{color:var(--gray);margin-bottom:24px;font-size:14.5px}
+.field{margin-bottom:16px;position:relative}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input,.field select{width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:14.5px;transition:.3s;background:#f8fafc}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+.field .err{display:none;color:#ef4444;font-size:12.5px;margin-top:5px}
+.field.invalid input{border-color:#ef4444}
+.field.invalid .err{display:block}
+.field.valid input{border-color:#10b981}
+.eye{position:absolute;right:14px;top:38px;color:var(--gray);cursor:pointer;background:none;border:none;font-size:16px}
+
+.row{display:flex;justify-content:space-between;align-items:center;margin:8px 0 20px;font-size:13.5px}
+.row label{display:flex;gap:6px;align-items:center;color:var(--gray);cursor:pointer}
+.row a{color:var(--royal);font-weight:600}
+.btn{width:100%;padding:13px;border-radius:10px;font-weight:600;cursor:pointer;border:none;background:var(--grad);color:#fff;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.3s;box-shadow:0 10px 24px rgba(30,64,175,.3)}
+.btn:hover{transform:translateY(-2px)}
+
+.divider{text-align:center;margin:24px 0;color:var(--gray);font-size:13px;position:relative}
+.divider::before,.divider::after{content:'';position:absolute;top:50%;width:42%;height:1px;background:#e2e8f0}
+.divider::before{left:0}.divider::after{right:0}
+
+.socials{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.socials button{background:#f1f5f9;border:1.5px solid #e2e8f0;padding:11px;border-radius:10px;cursor:pointer;font-size:16px;color:#475569;transition:.3s}
+.socials button:hover{background:var(--grad);color:#fff;border-color:transparent;transform:translateY(-2px)}
+
+.signup-link{text-align:center;margin-top:22px;font-size:14px;color:var(--gray)}
+.signup-link a{color:var(--royal);font-weight:600}
+
+.toast{position:fixed;top:30px;right:30px;background:#fff;padding:16px 22px;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.18);border-left:4px solid #10b981;display:flex;align-items:center;gap:12px;font-weight:500;color:var(--navy);z-index:1000;transform:translateX(120%);transition:.4s}
+.toast.show{transform:translateX(0)}
+.toast.err{border-left-color:#ef4444}
+.toast i{font-size:20px;color:#10b981}
+.toast.err i{color:#ef4444}
+
+@media(max-width:880px){.wrap{grid-template-columns:1fr}.side{display:none}.form{padding:40px 28px}}
+</style></head><body>
+<div class="shape a"></div><div class="shape b"></div>
+<div class="wrap">
+<div class="side">
+<div class="logo"> STACKLY</div>
+<h2>Welcome Back!</h2>
+<p>Sign in to access your dashboard, manage policies, and track claims — all in one place.</p>
+<ul>
+<li><i class="fas fa-check"></i> Manage all your policies</li>
+<li><i class="fas fa-check"></i> Track claim status in real time</li>
+<li><i class="fas fa-check"></i> 24/7 customer support</li>
+<li><i class="fas fa-check"></i> Bank-grade security</li>
+</ul>
+</div>
+<div class="form">
+<a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to home</a>
+<h1>Sign In</h1><p>Enter your credentials to continue</p>
+<form id="lf" novalidate>
+<div class="field"><label>I am a</label>
+<select id="role"><option value="customer">Customer</option><option value="admin">Admin</option></select></div>
+<div class="field" id="f-email"><label>Email</label><input type="email" id="email" placeholder="you@example.com"><div class="err">Enter a valid email.</div></div>
+<div class="field" id="f-pass"><label>Password</label><input type="password" id="pass" placeholder="••••••••"><button type="button" class="eye" id="eye"><i class="fas fa-eye"></i></button><div class="err">Password is required.</div></div>
+<div class="row"><label><input type="checkbox" id="rem"> Remember me</label><a href="#">Forgot Password?</a></div>
+<button type="submit" class="btn">Sign In <i class="fas fa-arrow-right"></i></button>
+</form>
+<div class="divider">or continue with</div>
+<div class="socials">
+<button title="Google"><i class="fab fa-google"></i></button>
+<button title="Facebook"><i class="fab fa-facebook-f"></i></button>
+<button title="Twitter"><i class="fab fa-twitter"></i></button>
+<button title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+</div>
+<div class="signup-link">Don't have an account? <a href="signup.html">Sign up free</a></div>
+</div></div>
+
+<div class="toast" id="toast"><i class="fas fa-circle-check"></i> <span id="tmsg">Login successful!</span></div>
+<script>
+const f={email:document.getElementById('email'),pass:document.getElementById('pass'),role:document.getElementById('role')};
+const w={email:document.getElementById('f-email'),pass:document.getElementById('f-pass')};
+const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function val(k){let ok=false;const v=f[k].value.trim();
+if(k==='email')ok=re.test(v);else ok=v.length>0;
+w[k].classList.toggle('invalid',!ok);w[k].classList.toggle('valid',ok);return ok}
+['email','pass'].forEach(k=>{f[k].addEventListener('input',()=>val(k));f[k].addEventListener('blur',()=>val(k))});
+document.getElementById('eye').onclick=()=>{const i=f.pass,e=document.querySelector('#eye i');i.type=i.type==='password'?'text':'password';e.className=i.type==='password'?'fas fa-eye':'fas fa-eye-slash'};
+function toast(m,err){const t=document.getElementById('toast');document.getElementById('tmsg').textContent=m;t.classList.toggle('err',!!err);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+document.getElementById('lf').addEventListener('submit',e=>{e.preventDefault();
+const ok=['email','pass'].map(val).every(Boolean);
+if(!ok){toast('Please fix the errors',true);return}
+const users=JSON.parse(localStorage.getItem('ss_users')||'[]');
+const u=users.find(x=>x.email===f.email.value.trim()&&x.role===f.role.value);
+const fullName=u?u.fullName:(f.role.value==='admin'?'Admin User':'Customer');
+localStorage.setItem('ss_session',JSON.stringify({email:f.email.value.trim(),role:f.role.value,fullName}));
+toast('Login successful! Redirecting…');
+setTimeout(()=>location.href=f.role.value==='admin'?'admin-dashboard.html':'customer-dashboard.html',900)});
+</script></body></html>
