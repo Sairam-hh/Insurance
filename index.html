@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SecureShield Insurance — Protecting What Matters Most</title>
-<meta name="description" content="Premium insurance plans for life, health, vehicle, travel, home & business. Trusted by millions."/>
+<meta name="description" content="Premium insurance plans for life, health, vehicle, travel, home & business. Trusted by 10 million Indians. IRDAI Approved. 99% Claim Settlement."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,13 +26,16 @@ a{text-decoration:none;color:inherit}
 .container{max-width:1280px;margin:0 auto;padding:0 24px}
 
 /* Loader */
-#loader{position:fixed;inset:0;background:var(--grad);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s,visibility .6s}
+#loader{position:fixed;inset:0;background:var(--grad);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .8s,visibility .8s}
 #loader.hide{opacity:0;visibility:hidden}
+.loader-logo{color:#fff;font-size:28px;font-weight:800;margin-bottom:20px;opacity:0;animation:fadeUp .6s .2s forwards}
 .spinner{width:70px;height:70px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+.loader-text{color:rgba(255,255,255,.7);font-size:14px;margin-top:16px;opacity:0;animation:fadeUp .6s .4s forwards}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 /* Scroll progress */
-#progress{position:fixed;top:0;left:0;height:4px;background:var(--grad2);width:0;z-index:9998;transition:width .1s}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--grad2);width:0;z-index:9998;transition:width .1s}
 
 /* Navbar */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);background:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.3);transition:.3s}
@@ -55,187 +58,266 @@ a{text-decoration:none;color:inherit}
 
 /* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden;background:var(--grad)}
-.hero video,.hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25;z-index:0}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,31,68,.85),rgba(37,99,235,.7));z-index:1}
-.shape{position:absolute;border-radius:50%;background:rgba(255,255,255,.08);filter:blur(40px);z-index:1;animation:float 8s ease-in-out infinite}
-.shape.s1{width:300px;height:300px;top:10%;left:-100px}
-.shape.s2{width:400px;height:400px;bottom:-150px;right:-100px;animation-delay:2s}
-.shape.s3{width:200px;height:200px;top:50%;right:30%;animation-delay:4s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
-.hero-left h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}
-.hero-left h1 span{background:linear-gradient(90deg,#38bdf8,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-left p{font-size:1.1rem;color:rgba(255,255,255,.9);margin-bottom:32px;max-width:540px;line-height:1.7}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;z-index:0}
+.hero-img-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;z-index:0}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,31,68,.88),rgba(37,99,235,.72));z-index:1}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,#f8fafc,transparent);z-index:2}
+
+/* Animated particles */
+.particles{position:absolute;inset:0;z-index:1;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);animation:floatP linear infinite}
+@keyframes floatP{0%{transform:translateY(100vh) scale(0)}100%{transform:translateY(-100px) scale(1);opacity:0}}
+
+.shape{position:absolute;border-radius:50%;background:rgba(255,255,255,.06);filter:blur(50px);z-index:1;animation:float 10s ease-in-out infinite}
+.shape.s1{width:400px;height:400px;top:5%;left:-150px}
+.shape.s2{width:500px;height:500px;bottom:-200px;right:-150px;animation-delay:3s}
+.shape.s3{width:250px;height:250px;top:45%;right:25%;animation-delay:5s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-35px) rotate(5deg)}}
+
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);padding:8px 16px;border-radius:30px;font-size:13px;font-weight:500;margin-bottom:22px;backdrop-filter:blur(10px)}
+.hero-tag i{color:#38bdf8;font-size:12px}
+.hero-left h1{font-size:clamp(2.4rem,5vw,4.2rem);font-weight:800;color:#fff;line-height:1.08;margin-bottom:22px}
+.hero-left h1 .line2{display:block;background:linear-gradient(90deg,#38bdf8,#a5f3fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-left p{font-size:1.08rem;color:rgba(255,255,255,.88);margin-bottom:34px;max-width:520px;line-height:1.75}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
 .btn-white{background:#fff;color:var(--navy)}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.2)}
-.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.22)}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
 .btn-outline-w:hover{background:#fff;color:var(--navy)}
-.hero-trust{margin-top:40px;display:flex;gap:30px;flex-wrap:wrap;color:rgba(255,255,255,.85);font-size:14px}
-.hero-trust div{display:flex;align-items:center;gap:8px}
-.hero-trust i{color:#38bdf8}
 
-.hero-right{position:relative;height:480px}
-.fcard{position:absolute;background:var(--glass);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:20px;box-shadow:var(--shadow);animation:bob 4s ease-in-out infinite}
-.fcard.c1{top:0;left:10%;width:240px;animation-delay:0s}
-.fcard.c2{top:30%;right:0;width:260px;animation-delay:1s}
-.fcard.c3{bottom:0;left:20%;width:280px;animation-delay:2s}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.fcard .ic{width:46px;height:46px;border-radius:12px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:20px;margin-bottom:12px}
-.fcard h4{font-size:16px;color:var(--navy);margin-bottom:4px}
-.fcard p{font-size:13px;color:var(--gray)}
+.hero-trust{display:flex;gap:28px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.82);font-size:13.5px}
+.trust-item .dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;flex-shrink:0}
+
+/* Hero right — floating cards */
+.hero-right{position:relative;height:500px}
+.fcard{position:absolute;background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.5);border-radius:22px;padding:22px;box-shadow:0 24px 64px rgba(10,31,68,.22);animation:bob 5s ease-in-out infinite}
+.fcard.c1{top:0;left:5%;width:250px;animation-delay:0s}
+.fcard.c2{top:28%;right:0;width:270px;animation-delay:1.5s}
+.fcard.c3{bottom:0;left:18%;width:290px;animation-delay:3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.fcard .ic{width:50px;height:50px;border-radius:14px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:22px;margin-bottom:14px;flex-shrink:0}
+.fcard .card-meta{display:flex;align-items:flex-start;gap:14px}
+.fcard .card-text h4{font-size:15px;color:var(--navy);margin-bottom:3px;font-weight:700}
+.fcard .card-text p{font-size:12.5px;color:var(--gray);line-height:1.4}
+.fcard .card-text .badge-sm{display:inline-block;margin-top:6px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(16,185,129,.1);color:#059669}
 .fcard.c2 .ic{background:linear-gradient(135deg,#10b981,#059669)}
+.fcard.c2 .badge-sm{background:rgba(37,99,235,.1);color:var(--royal)}
 .fcard.c3 .ic{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.fcard.c3 .badge-sm{background:rgba(245,158,11,.1);color:#d97706}
 
-/* Section */
-section{padding:90px 0}
-.section-head{text-align:center;max-width:700px;margin:0 auto 60px}
-.section-head .tag{display:inline-block;padding:6px 16px;background:rgba(37,99,235,.1);color:var(--royal);border-radius:30px;font-size:13px;font-weight:600;margin-bottom:14px}
-.section-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.2}
-.section-head p{color:var(--gray);font-size:1.05rem}
+/* Rating pill on hero card */
+.fcard-rating{display:flex;align-items:center;gap:4px;margin-top:10px;font-size:12px;color:var(--gray)}
+.fcard-rating .stars{color:#f59e0b;font-size:11px}
 
 /* Trusted */
-.trusted{padding:60px 0;background:#fff}
-.trusted-grid{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:30px;opacity:.7}
-.trusted-grid div{font-size:22px;font-weight:700;color:var(--gray);transition:.3s}
-.trusted-grid div:hover{color:var(--royal);transform:scale(1.05)}
+.trusted{padding:56px 0;background:#fff;border-bottom:1px solid #e2e8f0}
+.trusted-label{text-align:center;color:var(--gray);font-size:13px;font-weight:500;margin-bottom:28px;text-transform:uppercase;letter-spacing:.08em}
+.trusted-grid{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;gap:28px}
+.trusted-grid .brand{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:700;color:#94a3b8;transition:.3s;cursor:default}
+.trusted-grid .brand i{font-size:20px}
+.trusted-grid .brand:hover{color:var(--royal);transform:scale(1.06)}
+
+/* Section */
+section{padding:92px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 60px}
+.section-head .tag{display:inline-block;padding:6px 18px;background:rgba(37,99,235,.08);color:var(--royal);border-radius:30px;font-size:12.5px;font-weight:600;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase}
+.section-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.18}
+.section-head p{color:var(--gray);font-size:1.05rem;line-height:1.7}
 
 /* Why */
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.why-card{background:#fff;padding:36px 28px;border-radius:20px;box-shadow:var(--shadow);transition:.4s;border:1px solid #e2e8f0;position:relative;overflow:hidden}
-.why-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--grad2);transform:scaleX(0);transform-origin:left;transition:.4s}
-.why-card:hover{transform:translateY(-10px);box-shadow:0 30px 60px rgba(30,64,175,.2)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+.why-card{background:#fff;padding:38px 30px;border-radius:22px;box-shadow:0 8px 30px rgba(10,31,68,.07);transition:.4s;border:1px solid #e8edf4;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--grad2);transform:scaleX(0);transform-origin:left;transition:.45s}
+.why-card:hover{transform:translateY(-12px);box-shadow:0 30px 60px rgba(30,64,175,.18)}
 .why-card:hover::before{transform:scaleX(1)}
-.why-card .ic{width:64px;height:64px;border-radius:16px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:26px;margin-bottom:20px}
-.why-card h3{color:var(--navy);font-size:1.2rem;margin-bottom:10px}
-.why-card p{color:var(--gray);line-height:1.6;font-size:14.5px}
+.why-card .ic{width:66px;height:66px;border-radius:18px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:28px;margin-bottom:22px}
+.why-card h3{color:var(--navy);font-size:1.18rem;margin-bottom:10px;font-weight:700}
+.why-card p{color:var(--gray);line-height:1.68;font-size:14.5px}
+.why-card .learn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--royal);opacity:0;transform:translateX(-6px);transition:.3s}
+.why-card:hover .learn{opacity:1;transform:translateX(0)}
 
 /* Categories */
 .cats{background:linear-gradient(180deg,#f8fafc,#eff6ff)}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.cat{background:#fff;border-radius:18px;padding:28px 22px;text-align:center;cursor:pointer;transition:.4s;border:1px solid #e2e8f0}
-.cat:hover{background:var(--grad);color:#fff;transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(30,64,175,.3)}
-.cat:hover h4,.cat:hover p,.cat:hover .ic{color:#fff}
-.cat .ic{width:70px;height:70px;border-radius:50%;background:rgba(37,99,235,.1);color:var(--royal);display:grid;place-items:center;font-size:30px;margin:0 auto 16px;transition:.4s}
-.cat:hover .ic{background:rgba(255,255,255,.2)}
-.cat h4{color:var(--navy);margin-bottom:6px}
-.cat p{color:var(--gray);font-size:13px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
+.cat{background:#fff;border-radius:20px;padding:32px 22px;text-align:center;cursor:pointer;transition:.4s;border:1.5px solid #e2e8f0;position:relative;overflow:hidden}
+.cat::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:.4s}
+.cat:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 24px 48px rgba(30,64,175,.28);border-color:transparent}
+.cat:hover::before{opacity:1}
+.cat:hover h4,.cat:hover p{color:#fff;position:relative;z-index:1}
+.cat:hover .ic{background:rgba(255,255,255,.2);color:#fff;position:relative;z-index:1}
+.cat .ic{width:72px;height:72px;border-radius:50%;background:rgba(37,99,235,.08);color:var(--royal);display:grid;place-items:center;font-size:30px;margin:0 auto 18px;transition:.4s;position:relative;z-index:1}
+.cat h4{color:var(--navy);margin-bottom:6px;font-weight:700;position:relative;z-index:1;transition:.3s}
+.cat p{color:var(--gray);font-size:13px;position:relative;z-index:1;transition:.3s}
+.cat .arrow{position:absolute;bottom:16px;right:20px;color:rgba(37,99,235,.3);font-size:14px;transition:.4s;z-index:1}
+.cat:hover .arrow{color:rgba(255,255,255,.7);transform:translateX(4px)}
 
 /* Plans */
-.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
-.plan{background:#fff;border-radius:22px;padding:36px 28px;border:1.5px solid #e2e8f0;transition:.4s;position:relative}
-.plan:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--blue)}
-.plan.featured{background:var(--grad);color:#fff;transform:scale(1.04)}
-.plan.featured h3,.plan.featured .price{color:#fff}
-.plan.featured ul li{color:rgba(255,255,255,.9)}
-.plan .badge{position:absolute;top:-12px;right:24px;background:#f59e0b;color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600}
-.plan h3{color:var(--navy);font-size:1.3rem;margin-bottom:6px}
-.plan .price{font-size:2.4rem;font-weight:800;color:var(--navy);margin:14px 0}
-.plan .price small{font-size:.9rem;font-weight:400;color:var(--gray)}
-.plan.featured .price small{color:rgba(255,255,255,.7)}
-.plan ul{list-style:none;margin:20px 0}
-.plan ul li{padding:8px 0;color:var(--gray);font-size:14.5px;display:flex;gap:8px;align-items:center}
-.plan ul li i{color:#10b981}
+.plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px;align-items:start}
+.plan{background:#fff;border-radius:24px;padding:38px 30px;border:1.5px solid #e2e8f0;transition:.4s;position:relative}
+.plan:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(30,64,175,.16);border-color:var(--blue)}
+.plan.featured{background:var(--grad);color:#fff;transform:scale(1.04);box-shadow:0 30px 70px rgba(30,64,175,.4)}
+.plan.featured:hover{transform:scale(1.04) translateY(-8px)}
+.plan.featured .plan-desc,.plan.featured ul li,.plan.featured .price small{color:rgba(255,255,255,.78)}
+.plan .badge{position:absolute;top:-14px;right:26px;background:#f59e0b;color:#fff;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.04em;box-shadow:0 4px 14px rgba(245,158,11,.4)}
+.plan h3{color:var(--navy);font-size:1.3rem;margin-bottom:4px;font-weight:700}
+.plan.featured h3{color:#fff}
+.plan-desc{color:var(--gray);font-size:13.5px;margin-bottom:6px}
+.plan .price{font-size:2.6rem;font-weight:800;color:var(--navy);margin:16px 0 4px;line-height:1}
+.plan.featured .price{color:#fff}
+.plan .price small{font-size:.88rem;font-weight:400;color:var(--gray)}
+.plan .price-note{font-size:12px;color:var(--gray);margin-bottom:18px}
+.plan.featured .price-note{color:rgba(255,255,255,.65)}
+.plan ul{list-style:none;margin:6px 0 20px}
+.plan ul li{padding:9px 0;color:#334155;font-size:14px;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid #f1f5f9}
+.plan ul li:last-child{border-bottom:none}
+.plan ul li i{color:#10b981;margin-top:2px;flex-shrink:0}
+.plan.featured ul li{color:rgba(255,255,255,.88);border-bottom-color:rgba(255,255,255,.1)}
 .plan.featured ul li i{color:#86efac}
-.plan .btn{width:100%;justify-content:center;margin-top:14px}
+.plan .btn{width:100%;justify-content:center;margin-top:6px;padding:13px 22px;font-size:15px}
 
 /* Stats */
-.stats{background:var(--grad);color:#fff;padding:70px 0;position:relative;overflow:hidden}
-.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(56,189,248,.3),transparent 50%)}
-.stats-grid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;text-align:center}
-.stat .num{font-size:3rem;font-weight:800;background:linear-gradient(90deg,#fff,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat p{margin-top:6px;color:rgba(255,255,255,.85)}
+.stats{background:var(--grad);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 50%,rgba(56,189,248,.25),transparent 55%)}
+.stats::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 50%,rgba(30,64,175,.3),transparent 55%)}
+.stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:center}
+.stat{padding:20px}
+.stat .num{font-size:3.2rem;font-weight:800;background:linear-gradient(90deg,#fff,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.stat .num-suffix{font-size:2rem;font-weight:800;background:linear-gradient(90deg,#fff,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat p{margin-top:10px;color:rgba(255,255,255,.8);font-size:15px}
+.stat .stat-icon{font-size:28px;color:rgba(255,255,255,.3);margin-bottom:14px}
 
 /* Process */
-.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-.step{background:#fff;padding:30px;border-radius:20px;text-align:center;box-shadow:var(--shadow);position:relative;border-top:4px solid var(--blue);transition:.3s}
-.step:hover{transform:translateY(-6px)}
-.step .num{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:36px;height:36px;background:var(--grad);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700}
-.step i{font-size:36px;color:var(--royal);margin:18px 0 14px}
-.step h4{color:var(--navy);margin-bottom:8px}
-.step p{color:var(--gray);font-size:14px}
+.process-wrap{position:relative}
+.process-line{position:absolute;top:50px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--blue),var(--sky));opacity:.15;z-index:0}
+.process-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px}
+.step{background:#fff;padding:34px 24px 30px;border-radius:22px;text-align:center;box-shadow:0 8px 30px rgba(10,31,68,.08);position:relative;border:1px solid #e8edf4;transition:.35s}
+.step:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(30,64,175,.15);border-color:rgba(37,99,235,.2)}
+.step .num{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:36px;height:36px;background:var(--grad);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;box-shadow:0 4px 14px rgba(30,64,175,.3)}
+.step i{font-size:38px;color:var(--royal);margin:16px 0 16px;opacity:.85}
+.step h4{color:var(--navy);margin-bottom:8px;font-size:1.05rem;font-weight:700}
+.step p{color:var(--gray);font-size:14px;line-height:1.6}
+.step .time-badge{display:inline-block;margin-top:12px;padding:3px 12px;background:rgba(37,99,235,.08);color:var(--royal);border-radius:20px;font-size:12px;font-weight:600}
 
 /* Testimonials */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.testi{background:#fff;padding:30px;border-radius:20px;box-shadow:var(--shadow);transition:.3s;border:1px solid #e2e8f0}
-.testi:hover{transform:translateY(-6px)}
-.testi .stars{color:#f59e0b;margin-bottom:12px}
-.testi p{color:#334155;font-style:italic;line-height:1.7;margin-bottom:20px}
-.testi .who{display:flex;align-items:center;gap:12px}
-.testi .who img{width:50px;height:50px;border-radius:50%;object-fit:cover}
-.testi .who h5{color:var(--navy)}
-.testi .who span{color:var(--gray);font-size:13px}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
+.testi{background:#fff;padding:32px;border-radius:22px;box-shadow:0 8px 30px rgba(10,31,68,.07);transition:.35s;border:1px solid #e8edf4;position:relative}
+.testi:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(30,64,175,.14)}
+.testi .quote-ic{font-size:36px;color:rgba(37,99,235,.1);position:absolute;top:22px;right:22px;line-height:1}
+.testi .stars{color:#f59e0b;margin-bottom:14px;font-size:15px;letter-spacing:2px}
+.testi blockquote{color:#334155;font-style:italic;line-height:1.72;margin-bottom:22px;font-size:14.5px}
+.testi .who{display:flex;align-items:center;gap:14px}
+.testi .who img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid #eff6ff}
+.testi .who h5{color:var(--navy);font-weight:700;font-size:15px}
+.testi .who span{color:var(--gray);font-size:12.5px;display:flex;align-items:center;gap:5px;margin-top:2px}
+.testi .who span i{font-size:11px;color:#38bdf8}
+
+/* Image banner */
+.img-banner{position:relative;height:380px;overflow:hidden;border-radius:24px;margin:60px 0}
+.img-banner img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.img-banner:hover img{transform:scale(1.04)}
+.img-banner .overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,31,68,.75),rgba(37,99,235,.5));display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px}
+.img-banner .overlay h3{color:#fff;font-size:2rem;font-weight:800;margin-bottom:12px}
+.img-banner .overlay p{color:rgba(255,255,255,.88);font-size:1rem;max-width:500px;line-height:1.65}
 
 /* FAQ */
 .faq-wrap{max-width:820px;margin:0 auto}
-.faq{background:#fff;border:1px solid #e2e8f0;border-radius:14px;margin-bottom:14px;overflow:hidden;transition:.3s}
-.faq.open{box-shadow:var(--shadow);border-color:var(--blue)}
-.faq-q{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;color:var(--navy)}
-.faq-q i{transition:.3s;color:var(--royal)}
-.faq.open .faq-q i{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:.4s;padding:0 24px;color:var(--gray);line-height:1.7}
-.faq.open .faq-a{max-height:300px;padding:0 24px 20px}
+.faq{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;margin-bottom:14px;overflow:hidden;transition:.35s}
+.faq.open{box-shadow:0 12px 40px rgba(30,64,175,.12);border-color:rgba(37,99,235,.3)}
+.faq-q{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;color:var(--navy);font-size:15px;gap:16px}
+.faq-q i{transition:.35s;color:var(--royal);flex-shrink:0;width:32px;height:32px;background:rgba(37,99,235,.08);border-radius:50%;display:grid;place-items:center}
+.faq.open .faq-q i{transform:rotate(180deg);background:var(--royal);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:.4s;color:var(--gray);line-height:1.72;font-size:14.5px}
+.faq.open .faq-a{max-height:300px;padding:0 26px 24px}
 
 /* Newsletter */
-.newsletter{background:var(--grad);padding:70px 0;color:#fff;text-align:center;position:relative;overflow:hidden}
-.newsletter h2{font-size:2rem;margin-bottom:10px}
-.newsletter p{margin-bottom:24px;opacity:.9}
-.newsletter form{display:flex;max-width:500px;margin:0 auto;gap:10px;flex-wrap:wrap;justify-content:center}
-.newsletter input{flex:1;min-width:220px;padding:14px 20px;border:none;border-radius:10px;font-size:15px;outline:none}
+.newsletter{background:var(--grad);padding:80px 0;color:#fff;text-align:center;position:relative;overflow:hidden}
+.newsletter::before{content:'';position:absolute;top:-60%;left:-20%;width:140%;height:220%;background:radial-gradient(ellipse,rgba(56,189,248,.15),transparent 60%)}
+.newsletter h2{font-size:2.2rem;font-weight:800;margin-bottom:10px;position:relative}
+.newsletter p{margin-bottom:28px;opacity:.88;position:relative;font-size:1.05rem}
+.nl-form{display:flex;max-width:520px;margin:0 auto;gap:10px;flex-wrap:wrap;justify-content:center;position:relative}
+.nl-form input{flex:1;min-width:220px;padding:15px 22px;border:none;border-radius:12px;font-size:15px;outline:none;font-family:'Poppins',sans-serif}
+.nl-form input::placeholder{color:#94a3b8}
 
 /* CTA */
-.cta-box{background:linear-gradient(135deg,#0a1f44,#1e40af);border-radius:30px;padding:60px;text-align:center;color:#fff;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(circle,rgba(56,189,248,.2),transparent 60%)}
-.cta-box h2{position:relative;font-size:2.2rem;margin-bottom:14px}
-.cta-box p{position:relative;margin-bottom:24px;opacity:.9}
-.cta-box .btn{position:relative}
+.cta-box{background:linear-gradient(135deg,#0a1f44,#1e40af);border-radius:32px;padding:70px 60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:220%;background:radial-gradient(ellipse,rgba(56,189,248,.18),transparent 60%)}
+.cta-box h2{position:relative;font-size:2.4rem;font-weight:800;margin-bottom:14px;line-height:1.15}
+.cta-box p{position:relative;margin-bottom:30px;opacity:.88;font-size:1.05rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.65}
+.cta-box .cta-btns{position:relative;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-sky{background:var(--sky);color:var(--navy)}
+.btn-sky:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(56,189,248,.4)}
 
 /* Footer */
-footer{background:#0a1428;color:rgba(255,255,255,.7);padding:70px 0 0}
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
-.foot-col h4{color:#fff;margin-bottom:18px;font-size:1.05rem}
+footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:56px}
+.foot-col h4{color:#fff;margin-bottom:20px;font-size:1rem;font-weight:700}
 .foot-col ul{list-style:none}
-.foot-col ul li{padding:6px 0}
-.foot-col ul li a:hover{color:#38bdf8}
-.foot-col p{line-height:1.7;font-size:14.5px;margin-bottom:14px}
-.socials{display:flex;gap:10px}
-.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;transition:.3s}
-.socials a:hover{background:var(--grad);transform:translateY(-3px)}
-.foot-bot{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;text-align:center;font-size:14px}
+.foot-col ul li{padding:7px 0}
+.foot-col ul li a{transition:.3s;font-size:14.5px}
+.foot-col ul li a:hover{color:#38bdf8;padding-left:4px}
+.foot-col p{line-height:1.72;font-size:14px;margin-bottom:20px}
+.foot-col .logo{color:#fff;margin-bottom:16px}
+.socials{display:flex;gap:10px;margin-top:4px}
+.socials a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:rgba(255,255,255,.7);transition:.3s;font-size:15px}
+.socials a:hover{background:var(--grad);color:#fff;transform:translateY(-4px)}
+.foot-cert{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.cert-badge{padding:5px 12px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:12px;font-weight:600;color:rgba(255,255,255,.6)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.07);padding:26px 0;display:flex;align-items:center;justify-content:space-between;font-size:13.5px;flex-wrap:wrap;gap:12px}
+.foot-bot a{color:rgba(255,255,255,.5);transition:.3s}
+.foot-bot a:hover{color:#38bdf8}
 
 /* Back to top */
-#totop{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--grad);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:999}
+#totop{position:fixed;bottom:32px;right:32px;width:52px;height:52px;border-radius:50%;background:var(--grad);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 8px 24px rgba(30,64,175,.4);opacity:0;visibility:hidden;transition:.3s;z-index:999}
 #totop.show{opacity:1;visibility:visible}
-#totop:hover{transform:translateY(-4px)}
+#totop:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(30,64,175,.5)}
 
 /* Responsive */
 @media(max-width:980px){
-  .hero-grid{grid-template-columns:1fr;gap:80px}
-  .hero-right{height:520px;margin-top:20px}
+  .hero-grid{grid-template-columns:1fr;gap:70px}
+  .hero-right{height:480px;margin-top:10px}
   .foot-grid{grid-template-columns:1fr 1fr}
   .plan.featured{transform:none}
+  .plan.featured:hover{transform:translateY(-8px)}
+  .process-line{display:none}
 }
 @media(max-width:768px){
-  .menu{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:30px;gap:20px;box-shadow:var(--shadow);transform:translateY(-150%);transition:.4s}
+  .menu{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:30px;gap:20px;box-shadow:var(--shadow);transform:translateY(-150%);transition:.4s;z-index:999}
   .menu.open{transform:translateY(0)}
   .hamburger{display:block}
   .nav-btns .btn-ghost{display:none}
-  .fcard.c1{left:0;width:200px}
-  .fcard.c2{width:210px}
-  .fcard.c3{left:5%;width:220px}
-  .cta-box{padding:40px 24px}
+  .fcard.c1{left:0;width:210px}
+  .fcard.c2{width:220px}
+  .fcard.c3{left:5%;width:230px}
+  .cta-box{padding:44px 28px}
+  .cta-box h2{font-size:1.8rem}
   .foot-grid{grid-template-columns:1fr}
-  section{padding:60px 0}
+  section{padding:68px 0}
+  .img-banner{height:260px;margin:40px 0}
+  .img-banner .overlay h3{font-size:1.4rem}
 }
+.logo{
+  border-radius:8px;
+}
+.logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
 </style>
 </head>
 <body>
-<div id="loader"><div class="spinner"></div></div>
+<div id="loader">
+  <div class="loader-logo">STACKLY</div>
+  
+     <div class="spinner"></div>
+  <div class="loader-text">Loading your protection plan…</div>
+</div>
 <div id="progress"></div>
 
+<!-- NAVBAR -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="index.html" class="logo"> STACKLY</a>
+    <a href="index.html" class="logo">
+      <img src="./gallery/stackly-darkBlue-color.png" alt="stackly-insurance" class="logo-img">
+    </a>
     <ul class="menu" id="menu">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -246,216 +328,578 @@ footer{background:#0a1428;color:rgba(255,255,255,.7);padding:70px 0 0}
     </ul>
     <div class="nav-btns">
       <a href="login.html" class="btn btn-ghost">Login</a>
-      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+      <a href="signup.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
       <button class="hamburger" id="ham"><i class="fas fa-bars"></i></button>
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
-  <video autoplay muted loop playsinline class="hero-bg" poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600">
+  <video autoplay muted loop playsinline class="hero-video" poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&auto=format">
     <source src="https://cdn.coverr.co/videos/coverr-handshake-in-the-office-2633/1080p.mp4" type="video/mp4">
   </video>
+  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&auto=format&fit=crop" class="hero-img-fallback" alt="Insurance background" onerror="this.style.display='none'">
+  <div class="particles" id="particles"></div>
   <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
   <div class="container hero-grid">
-    <div class="hero-left" data-aos="fade-right">
-      <h1>Protect What <span>Matters Most</span> With Confidence</h1>
-      <p>India's most trusted insurance partner. Get instant quotes, compare 50+ plans, and secure your family's future with policies built around you.</p>
+    <div class="hero-left" data-aos="fade-right" data-aos-duration="900">
+      <div class="hero-tag"><i class="fas fa-certificate"></i> IRDAI Approved · Since 1999</div>
+      <h1>
+        Protect What <span class="line2">Matters Most</span> With Confidence
+      </h1>
+      <p>India's most trusted insurance partner. Get instant quotes, compare 50+ curated plans, and secure your family's future with policies built around your unique life.</p>
       <div class="hero-cta">
-        <a href="plans.html" class="btn btn-white">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
-        <a href="services.html" class="btn btn-outline-w">Explore Plans</a>
+        <a href="plans.html" class="btn btn-white" style="font-size:15px;padding:14px 28px">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+        <a href="services.html" class="btn btn-outline-w" style="font-size:15px;padding:14px 28px">Explore Plans</a>
       </div>
       <div class="hero-trust">
-        <div><i class="fas fa-check-circle"></i> IRDAI Approved</div>
-        <div><i class="fas fa-check-circle"></i> 24/7 Claim Support</div>
-        <div><i class="fas fa-check-circle"></i> 99% Settlement Ratio</div>
+        <div class="trust-item"><span class="dot"></span> IRDAI Approved</div>
+        <div class="trust-item"><span class="dot"></span> 24/7 Claim Support</div>
+        <div class="trust-item"><span class="dot"></span> 99% Settlement Ratio</div>
+        <div class="trust-item"><span class="dot"></span> 10M+ Customers</div>
       </div>
     </div>
-    <div class="hero-right" data-aos="fade-left">
-      <div class="fcard c1"><div class="ic"><i class="fas fa-heart-pulse"></i></div><h4>Health Cover</h4><p>Up to ₹1 Cr coverage</p></div>
-      <div class="fcard c2"><div class="ic"><i class="fas fa-car"></i></div><h4>Motor Insurance</h4><p>Instant policy in 2 min</p></div>
-      <div class="fcard c3"><div class="ic"><i class="fas fa-house-chimney"></i></div><h4>Home Shield</h4><p>Comprehensive protection</p></div>
+    <div class="hero-right" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+      <div class="fcard c1">
+        <div class="card-meta">
+          <div class="ic"><i class="fas fa-heart-pulse"></i></div>
+          <div class="card-text">
+            <h4>Health Cover</h4>
+            <p>Up to ₹1 Crore coverage. Cashless across 500+ hospitals.</p>
+            <span class="badge-sm">✓ Active Policy</span>
+          </div>
+        </div>
+        <div class="fcard-rating"><span class="stars">★★★★★</span>&nbsp;4.9 · 2.3L Reviews</div>
+      </div>
+      <div class="fcard c2">
+        <div class="card-meta">
+          <div class="ic"><i class="fas fa-car"></i></div>
+          <div class="card-text">
+            <h4>Motor Insurance</h4>
+            <p>Instant policy in 2 minutes. Zero depreciation add-on available.</p>
+            <span class="badge-sm">⚡ Instant Issue</span>
+          </div>
+        </div>
+        <div class="fcard-rating"><span class="stars">★★★★★</span>&nbsp;4.8 · 1.8L Reviews</div>
+      </div>
+      <div class="fcard c3">
+        <div class="card-meta">
+          <div class="ic"><i class="fas fa-house-chimney"></i></div>
+          <div class="card-text">
+            <h4>Home Shield</h4>
+            <p>Comprehensive protection against fire, flood & theft.</p>
+            <span class="badge-sm">🏠 Most Popular</span>
+          </div>
+        </div>
+        <div class="fcard-rating"><span class="stars">★★★★★</span>&nbsp;4.7 · 90K Reviews</div>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- TRUSTED PARTNERS -->
 <section class="trusted">
   <div class="container">
+    <p class="trusted-label">Trusted Insurance Partners</p>
     <div class="trusted-grid">
-      <div data-aos="fade-up">TATA AIG</div>
-      <div data-aos="fade-up" data-aos-delay="100">HDFC ERGO</div>
-      <div data-aos="fade-up" data-aos-delay="200">ICICI Lombard</div>
-      <div data-aos="fade-up" data-aos-delay="300">Bajaj Allianz</div>
-      <div data-aos="fade-up" data-aos-delay="400">SBI Life</div>
-      <div data-aos="fade-up" data-aos-delay="500">Max Bupa</div>
+      <div class="brand" data-aos="fade-up"><i class="fas fa-building-columns"></i> TATA AIG</div>
+      <div class="brand" data-aos="fade-up" data-aos-delay="80"><i class="fas fa-landmark"></i> HDFC ERGO</div>
+      <div class="brand" data-aos="fade-up" data-aos-delay="160"><i class="fas fa-building"></i> ICICI Lombard</div>
+      <div class="brand" data-aos="fade-up" data-aos-delay="240"><i class="fas fa-shield-halved"></i> Bajaj Allianz</div>
+      <div class="brand" data-aos="fade-up" data-aos-delay="320"><i class="fas fa-university"></i> SBI Life</div>
+      <div class="brand" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-heart"></i> Max Bupa</div>
     </div>
   </div>
 </section>
 
+<!-- WHY CHOOSE US -->
 <section>
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="tag">Why Choose Us</span>
       <h2>Insurance Built Around Your Life</h2>
-      <p>Premium service, transparent pricing, and a promise that's always honored.</p>
+      <p>Premium service, transparent pricing, and a promise that's always honored — because your peace of mind is non-negotiable.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card" data-aos="fade-up"><div class="ic"><i class="fas fa-shield-halved"></i></div><h3>Trusted Protection</h3><p>IRDAI-licensed plans backed by India's top insurers, safeguarding 10M+ families.</p></div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="100"><div class="ic"><i class="fas fa-bolt"></i></div><h3>Instant Quotes</h3><p>Compare hundreds of policies and buy in minutes — no paperwork, no waiting.</p></div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="200"><div class="ic"><i class="fas fa-headset"></i></div><h3>24/7 Support</h3><p>Round-the-clock claim assistance from real experts who care about your case.</p></div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="300"><div class="ic"><i class="fas fa-hand-holding-dollar"></i></div><h3>Best Prices</h3><p>Lowest premium guarantee with exclusive discounts up to 40% off.</p></div>
+      <div class="why-card" data-aos="fade-up">
+        <div class="ic"><i class="fas fa-shield-halved"></i></div>
+        <h3>Trusted Protection</h3>
+        <p>IRDAI-licensed plans backed by India's top 15 insurers. Over 10 million families trust SecureShield for their most important moments.</p>
+         <span class="learn">Learn more <i class="fas fa-arrow-right" style="font-size:11px"></i></span>
+      </div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="ic"><i class="fas fa-bolt"></i></div>
+        <h3>Instant Quotes & Issuance</h3>
+        <p>Compare hundreds of policies side-by-side in seconds. Buy and receive your policy document in under 2 minutes — zero paperwork, zero waiting.</p>
+        <span class="learn">Learn more <i class="fas fa-arrow-right" style="font-size:11px"></i></span>
+      </div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="ic"><i class="fas fa-headset"></i></div>
+        <h3>24/7 Dedicated Support</h3>
+        <p>Round-the-clock claim assistance from real, trained experts who know your policy inside out — not chatbots. We're always a call away.</p>
+        <span class="learn">Learn more <i class="fas fa-arrow-right" style="font-size:11px"></i></span>
+      </div>
+      <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="ic"><i class="fas fa-hand-holding-dollar"></i></div>
+        <h3>Guaranteed Best Prices</h3>
+        <p>Our price-match guarantee means you always pay the lowest premium available. Exclusive discounts of up to 40% for new customers.</p>
+        <span class="learn">Learn more <i class="fas fa-arrow-right" style="font-size:11px"></i></span>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CATEGORIES -->
 <section class="cats">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="tag">Categories</span>
       <h2>Explore Insurance Categories</h2>
-      <p>Tailored coverage for every part of your life.</p>
+      <p>Tailored coverage for every part of your life — from your health and home to your business and beyond.</p>
     </div>
     <div class="cat-grid">
-      <div class="cat" data-aos="zoom-in"><div class="ic"><i class="fas fa-heart-pulse"></i></div><h4>Health</h4><p>Cashless treatment</p></div>
-      <div class="cat" data-aos="zoom-in" data-aos-delay="80"><div class="ic"><i class="fas fa-user-shield"></i></div><h4>Life</h4><p>Family protection</p></div>
-      <div class="cat" data-aos="zoom-in" data-aos-delay="160"><div class="ic"><i class="fas fa-car"></i></div><h4>Motor</h4><p>Car & bike cover</p></div>
-      <div class="cat" data-aos="zoom-in" data-aos-delay="240"><div class="ic"><i class="fas fa-plane"></i></div><h4>Travel</h4><p>Global coverage</p></div>
-      <div class="cat" data-aos="zoom-in" data-aos-delay="320"><div class="ic"><i class="fas fa-house-chimney"></i></div><h4>Home</h4><p>Property safety</p></div>
-      <div class="cat" data-aos="zoom-in" data-aos-delay="400"><div class="ic"><i class="fas fa-briefcase"></i></div><h4>Business</h4><p>Enterprise plans</p></div>
+      <div class="cat" data-aos="zoom-in">
+        <div class="ic"><i class="fas fa-heart-pulse"></i></div>
+        <h4>Health</h4>
+        <p>Cashless treatment across 500+ hospitals</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <div class="cat" data-aos="zoom-in" data-aos-delay="80">
+        <div class="ic"><i class="fas fa-user-shield"></i></div>
+        <h4>Life</h4>
+        <p>Secure your family's financial future</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <div class="cat" data-aos="zoom-in" data-aos-delay="160">
+        <div class="ic"><i class="fas fa-car"></i></div>
+        <h4>Motor</h4>
+        <p>Full coverage for cars & two-wheelers</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <div class="cat" data-aos="zoom-in" data-aos-delay="240">
+        <div class="ic"><i class="fas fa-plane"></i></div>
+        <h4>Travel</h4>
+        <p>Worry-free global coverage</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <div class="cat" data-aos="zoom-in" data-aos-delay="320">
+        <div class="ic"><i class="fas fa-house-chimney"></i></div>
+        <h4>Home</h4>
+        <p>Protect your property & contents</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
+      <div class="cat" data-aos="zoom-in" data-aos-delay="400">
+        <div class="ic"><i class="fas fa-briefcase"></i></div>
+        <h4>Business</h4>
+        <p>Enterprise & SME protection plans</p>
+        <i class="fas fa-arrow-right arrow"></i>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- IMAGE BANNER -->
+<section style="padding:0 0 92px">
+  <div class="container">
+    <div class="img-banner" data-aos="zoom-in">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&auto=format&fit=crop&q=80" alt="Happy Indian family protected by SecureShield">
+      <div class="overlay">
+        <h3>Over 10 Million Families Protected</h3>
+        <p>From Kanyakumari to Kashmir, SecureShield is the name Indian families trust when it matters most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section style="padding-top:0">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
-      <span class="tag">Plans</span>
-      <h2>Choose the Right Plan</h2>
-      <p>Flexible plans that grow with you.</p>
+      <span class="tag">Our Plans</span>
+      <h2>Choose the Right Plan for You</h2>
+      <p>Flexible, transparent plans that grow with your needs. No hidden charges, ever.</p>
     </div>
     <div class="plans-grid">
-      <div class="plan" data-aos="fade-up"><h3>Basic</h3><p>For individuals</p><div class="price">₹499<small>/mo</small></div><ul><li><i class="fas fa-check"></i> ₹5L Coverage</li><li><i class="fas fa-check"></i> Cashless Hospitals</li><li><i class="fas fa-check"></i> Basic Add-ons</li></ul><a href="plans.html" class="btn btn-ghost">Get Started</a></div>
-      <div class="plan featured" data-aos="fade-up" data-aos-delay="100"><span class="badge">Popular</span><h3>Premium</h3><p>For families</p><div class="price">₹1,299<small>/mo</small></div><ul><li><i class="fas fa-check"></i> ₹25L Coverage</li><li><i class="fas fa-check"></i> Pan India Network</li><li><i class="fas fa-check"></i> Free Health Checkups</li><li><i class="fas fa-check"></i> Maternity Cover</li></ul><a href="plans.html" class="btn btn-white">Get Started</a></div>
-      <div class="plan" data-aos="fade-up" data-aos-delay="200"><h3>Enterprise</h3><p>For businesses</p><div class="price">₹4,999<small>/mo</small></div><ul><li><i class="fas fa-check"></i> ₹1Cr Coverage</li><li><i class="fas fa-check"></i> Group Plans</li><li><i class="fas fa-check"></i> Dedicated Manager</li></ul><a href="plans.html" class="btn btn-ghost">Get Started</a></div>
+      <div class="plan" data-aos="fade-up">
+        <h3>Basic</h3>
+        <p class="plan-desc">Ideal for individuals starting out</p>
+        <div class="price">₹499<small>/mo</small></div>
+        <p class="price-note">Billed annually · Save 20%</p>
+        <ul>
+          <li><i class="fas fa-check"></i> ₹5 Lakh Health Coverage</li>
+          <li><i class="fas fa-check"></i> Cashless at 200+ Hospitals</li>
+          <li><i class="fas fa-check"></i> Basic Add-ons Available</li>
+          <li><i class="fas fa-check"></i> Email & Chat Support</li>
+        </ul>
+        <a href="plans.html" class="btn btn-ghost">Get Started</a>
+      </div>
+      <div class="plan featured" data-aos="fade-up" data-aos-delay="100">
+        <span class="badge">Most Popular</span>
+        <h3>Premium</h3>
+        <p class="plan-desc">Perfect for families & young couples</p>
+        <div class="price">₹1,299<small>/mo</small></div>
+        <p class="price-note">Billed annually · Save 30%</p>
+        <ul>
+          <li><i class="fas fa-check"></i> ₹25 Lakh Health Coverage</li>
+          <li><i class="fas fa-check"></i> Pan-India Hospital Network</li>
+          <li><i class="fas fa-check"></i> Annual Free Health Checkup</li>
+          <li><i class="fas fa-check"></i> Maternity & Newborn Cover</li>
+          <li><i class="fas fa-check"></i> 24/7 Priority Phone Support</li>
+        </ul>
+        <a href="plans.html" class="btn btn-white">Get Started <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="plan" data-aos="fade-up" data-aos-delay="200">
+        <h3>Enterprise</h3>
+        <p class="plan-desc">Built for growing businesses & teams</p>
+        <div class="price">₹4,999<small>/mo</small></div>
+        <p class="price-note">Per month · Custom billing available</p>
+        <ul>
+          <li><i class="fas fa-check"></i> ₹1 Crore Group Coverage</li>
+          <li><i class="fas fa-check"></i> Flexible Group Plans</li>
+          <li><i class="fas fa-check"></i> Dedicated Relationship Manager</li>
+          <li><i class="fas fa-check"></i> Custom Policy Design</li>
+        </ul>
+        <a href="plans.html" class="btn btn-ghost">Get Started</a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- STATS -->
 <section class="stats">
   <div class="container stats-grid">
-    <div class="stat" data-aos="zoom-in"><div class="num" data-count="10">0</div><p>Million+ Customers</p></div>
-    <div class="stat" data-aos="zoom-in" data-aos-delay="100"><div class="num" data-count="500">0</div><p>Network Hospitals</p></div>
-    <div class="stat" data-aos="zoom-in" data-aos-delay="200"><div class="num" data-count="99">0</div><p>% Claim Settlement</p></div>
-    <div class="stat" data-aos="zoom-in" data-aos-delay="300"><div class="num" data-count="25">0</div><p>Years of Trust</p></div>
+    <div class="stat" data-aos="zoom-in">
+      <div class="stat-icon"><i class="fas fa-users"></i></div>
+      <div><span class="num" data-count="10">0</span><span class="num-suffix">M+</span></div>
+      <p>Happy Customers</p>
+    </div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="100">
+      <div class="stat-icon"><i class="fas fa-hospital"></i></div>
+      <div><span class="num" data-count="500">0</span><span class="num-suffix">+</span></div>
+      <p>Network Hospitals</p>
+    </div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="200">
+      <div class="stat-icon"><i class="fas fa-circle-check"></i></div>
+      <div><span class="num" data-count="99">0</span><span class="num-suffix">%</span></div>
+      <p>Claim Settlement Rate</p>
+    </div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="300">
+      <div class="stat-icon"><i class="fas fa-award"></i></div>
+      <div><span class="num" data-count="25">0</span><span class="num-suffix">+</span></div>
+      <p>Years of Trust</p>
+    </div>
   </div>
 </section>
 
+<!-- CLAIM PROCESS -->
 <section>
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="tag">Claims Process</span>
       <h2>Simple 4-Step Claim Process</h2>
-      <p>Fast, transparent and hassle-free.</p>
+      <p>Fast, transparent and completely hassle-free. Most claims are resolved within 24 hours.</p>
     </div>
-    <div class="process-grid">
-      <div class="step" data-aos="fade-up"><div class="num">1</div><i class="fas fa-file-pen"></i><h4>Register</h4><p>File claim online in 2 minutes.</p></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="100"><div class="num">2</div><i class="fas fa-file-shield"></i><h4>Verify</h4><p>We verify documents quickly.</p></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="200"><div class="num">3</div><i class="fas fa-circle-check"></i><h4>Approve</h4><p>Get approval within 24 hours.</p></div>
-      <div class="step" data-aos="fade-up" data-aos-delay="300"><div class="num">4</div><i class="fas fa-hand-holding-dollar"></i><h4>Settle</h4><p>Money in your account fast.</p></div>
+    <div class="process-wrap">
+      <div class="process-line"></div>
+      <div class="process-grid">
+        <div class="step" data-aos="fade-up">
+          <div class="num">1</div>
+          <i class="fas fa-file-pen"></i>
+          <h4>Register Claim</h4>
+          <p>File your claim online, via app, or call us in under 2 minutes. No lengthy forms.</p>
+          <span class="time-badge">~2 mins</span>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="100">
+          <div class="num">2</div>
+          <i class="fas fa-file-shield"></i>
+          <h4>Document Verification</h4>
+          <p>Upload documents digitally. Our team verifies with speed and accuracy.</p>
+          <span class="time-badge">~4 hours</span>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="200">
+          <div class="num">3</div>
+          <i class="fas fa-circle-check"></i>
+          <h4>Claim Approved</h4>
+          <p>Receive digital approval confirmation. Track status live in your dashboard.</p>
+          <span class="time-badge">~24 hours</span>
+        </div>
+        <div class="step" data-aos="fade-up" data-aos-delay="300">
+          <div class="num">4</div>
+          <i class="fas fa-hand-holding-dollar"></i>
+          <h4>Fast Settlement</h4>
+          <p>Money directly into your bank account or cashless clearance at the hospital.</p>
+          <span class="time-badge">~48 hours</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="cats">
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="tag">Testimonials</span>
       <h2>Loved by 10 Million+ Indians</h2>
+      <p>Real stories from real customers who chose SecureShield for life's most important moments.</p>
     </div>
     <div class="testi-grid">
-      <div class="testi" data-aos="fade-up"><div class="stars">★★★★★</div><p>"Settled my hospital claim in 24 hours. SecureShield really cares about customers."</p><div class="who"><img src="https://i.pravatar.cc/100?img=12" alt=""><div><h5>Rahul Sharma</h5><span>Delhi</span></div></div></div>
-      <div class="testi" data-aos="fade-up" data-aos-delay="100"><div class="stars">★★★★★</div><p>"Easy to compare plans, transparent pricing. Got the best premium for my family."</p><div class="who"><img src="https://i.pravatar.cc/100?img=32" alt=""><div><h5>Priya Patel</h5><span>Mumbai</span></div></div></div>
-      <div class="testi" data-aos="fade-up" data-aos-delay="200"><div class="stars">★★★★★</div><p>"Excellent service. Their team handled everything from claim to settlement."</p><div class="who"><img src="https://i.pravatar.cc/100?img=14" alt=""><div><h5>Arjun Mehta</h5><span>Bangalore</span></div></div></div>
+      <div class="testi" data-aos="fade-up">
+        <i class="fas fa-quote-right quote-ic"></i>
+        <div class="stars">★★★★★</div>
+        <blockquote>"When my father was hospitalised unexpectedly, SecureShield settled the entire ₹3.2 lakh bill in under 24 hours. Absolutely no stress — just relief."</blockquote>
+        <div class="who">
+          <img src="https://i.pravatar.cc/100?img=12" alt="Rahul Sharma">
+          <div>
+            <h5>Rahul Sharma</h5>
+            <span><i class="fas fa-map-marker-alt"></i> New Delhi · Health Plan Customer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-quote-right quote-ic"></i>
+        <div class="stars">★★★★★</div>
+        <blockquote>"I compared 12 plans in 5 minutes and bought one right then. The pricing was exactly as shown — no hidden fees, no surprises. My family is finally protected."</blockquote>
+        <div class="who">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Priya Patel">
+          <div>
+            <h5>Priya Patel</h5>
+            <span><i class="fas fa-map-marker-alt"></i> Mumbai · Premium Plan Customer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-quote-right quote-ic"></i>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Our entire team of 40 is now covered under the Enterprise plan. The dedicated relationship manager made the entire onboarding seamless. Outstanding service."</blockquote>
+        <div class="who">
+          <img src="https://i.pravatar.cc/100?img=14" alt="Arjun Mehta">
+          <div>
+            <h5>Arjun Mehta</h5>
+            <span><i class="fas fa-map-marker-alt"></i> Bengaluru · Enterprise Customer</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
 <section>
   <div class="container">
     <div class="section-head" data-aos="fade-up">
       <span class="tag">FAQ</span>
       <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know before you get covered.</p>
     </div>
     <div class="faq-wrap">
-      <div class="faq"><div class="faq-q">How quickly can I get a policy? <i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Most policies are issued instantly online once payment is completed. Health and life plans may take 1-2 days for medical verification.</p></div></div>
-      <div class="faq"><div class="faq-q">What is the claim settlement ratio? <i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>We maintain a 99% claim settlement ratio across all our insurance categories.</p></div></div>
-      <div class="faq"><div class="faq-q">Can I customize my plan? <i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes! Every plan supports multiple add-ons and riders to suit your specific needs.</p></div></div>
-      <div class="faq"><div class="faq-q">Do you offer cashless treatment? <i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>We have 500+ network hospitals nationwide offering complete cashless services.</p></div></div>
+      <div class="faq" data-aos="fade-up">
+        <div class="faq-q">How quickly can I get a policy after purchase? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Most motor and travel policies are issued instantly the moment payment is confirmed. Health and life insurance policies are typically issued within 1–2 business days, as they may require a brief medical questionnaire or verification step.</p></div>
+      </div>
+      <div class="faq" data-aos="fade-up" data-aos-delay="60">
+        <div class="faq-q">What is your claim settlement ratio? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>SecureShield maintains a 99% claim settlement ratio across all insurance categories — one of the highest in the Indian insurance industry. This figure is audited annually and published in our annual report.</p></div>
+      </div>
+      <div class="faq" data-aos="fade-up" data-aos-delay="120">
+        <div class="faq-q">Can I customise my plan with add-ons? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Absolutely. Every plan supports a wide range of add-ons and riders — including critical illness cover, zero depreciation for motor, maternity benefits, and international coverage for travel. Our advisors can help you build exactly what you need.</p></div>
+      </div>
+      <div class="faq" data-aos="fade-up" data-aos-delay="180">
+        <div class="faq-q">Do you offer cashless treatment at hospitals? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Yes. We have a network of 500+ empanelled hospitals across India offering complete cashless treatment. Simply present your SecureShield health card at the network hospital — no upfront payment required.</p></div>
+      </div>
+      <div class="faq" data-aos="fade-up" data-aos-delay="240">
+        <div class="faq-q">Is my existing condition covered under health plans? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Pre-existing conditions are typically covered after a standard waiting period of 2–4 years, as per IRDAI guidelines. Our advisors will walk you through exactly what applies to your situation during your free consultation.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- NEWSLETTER -->
 <section class="newsletter">
   <div class="container">
-    <h2 data-aos="fade-up">Stay Updated</h2>
-    <p data-aos="fade-up" data-aos-delay="100">Get exclusive insurance tips, offers and updates straight to your inbox.</p>
-    <form data-aos="fade-up" data-aos-delay="200" onsubmit="event.preventDefault();this.querySelector('input').value='';alert('Subscribed!')">
-      <input type="email" placeholder="Enter your email" required>
-      <button class="btn btn-white" type="submit">Subscribe</button>
-    </form>
+    <h2 data-aos="fade-up">Stay One Step Ahead</h2>
+    <p data-aos="fade-up" data-aos-delay="80">Get exclusive insurance tips, seasonal offers, and important policy updates delivered to your inbox every month.</p>
+    <div class="nl-form" data-aos="fade-up" data-aos-delay="160">
+      <input type="email" placeholder="Enter your email address" id="nl-email" required>
+      <button class="btn btn-white" onclick="handleSubscribe()" style="padding:15px 28px;font-size:15px">Subscribe <i class="fas fa-paper-plane"></i></button>
+    </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section>
   <div class="container">
     <div class="cta-box" data-aos="zoom-in">
       <h2>Ready to Secure Your Future?</h2>
-      <p>Talk to our expert and find the right plan for you in minutes.</p>
-      <a href="contact.html" class="btn btn-white">Get Started Today <i class="fas fa-arrow-right"></i></a>
+      <p>Talk to one of our insurance experts today. Get a personalised recommendation and the best premium for your needs — completely free, no obligation.</p>
+      <div class="cta-btns">
+        <a href="404.html" class="btn btn-white" style="font-size:15px;padding:14px 28px">Talk to an Expert <i class="fas fa-arrow-right"></i></a>
+        <a href="404.html" class="btn btn-sky" style="font-size:15px;padding:14px 28px">Browse Plans <i class="fas fa-th-list"></i></a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="foot-grid">
       <div class="foot-col">
-        <div class="logo" style="color:#fff;margin-bottom:14px"> STACKLY</div>
-        <p>India's most trusted insurance platform protecting millions of families with reliable, affordable coverage.</p>
+        <a href="index.html">
+            <img src="./gallery/STACKLY-BLACK-BACKGROUND-COLOR.png" alt="grocery store Logo" class="logo-img">
+        </a>
+        <p>India's most trusted insurance platform, protecting over 10 million families with reliable, affordable, and fully IRDAI-compliant coverage since 1999.</p>
         <div class="socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="foot-cert">
+          <span class="cert-badge">IRDAI Approved</span>
+          <span class="cert-badge">ISO 27001</span>
+          <span class="cert-badge">PCI DSS</span>
         </div>
       </div>
-      <div class="foot-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="plans.html">Plans</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="foot-col"><h4>Insurance</h4><ul><li><a href="#">Health</a></li><li><a href="#">Life</a></li><li><a href="#">Motor</a></li><li><a href="#">Travel</a></li></ul></div>
-      <div class="foot-col"><h4>Support</h4><ul><li><a href="claims.html">Claims</a></li><li><a href="#">Help Center</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li></ul></div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Our Services</a></li>
+          <li><a href="plans.html">Plans & Pricing</a></li>
+          <li><a href="claims.html">File a Claim</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Insurance</h4>
+        <ul>
+          <li><a href="#">Health Insurance</a></li>
+          <li><a href="#">Life Insurance</a></li>
+          <li><a href="#">Motor Insurance</a></li>
+          <li><a href="#">Travel Insurance</a></li>
+          <li><a href="#">Home Insurance</a></li>
+          <li><a href="#">Business Insurance</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="claims.html">Claims Center</a></li>
+          <li><a href="#">Help & FAQs</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Grievance Redressal</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="foot-bot">© 2025 SecureShield Insurance. All rights reserved.</div>
+    <div class="foot-bot">
+      <span>© 2025 STACKLY Insurance Pvt. Ltd. All rights reserved. · CIN: U66010MH1999PTC123456</span>
+      <div style="display:flex;gap:20px">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<button id="totop"><i class="fas fa-arrow-up"></i></button>
+<button id="totop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hide'),500);AOS.init({duration:800,once:true})});
-const nav=document.getElementById('nav'),progress=document.getElementById('progress'),totop=document.getElementById('totop');
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-  progress.style.width=(y/h*100)+'%';
-  nav.classList.toggle('scrolled',y>40);
-  totop.classList.toggle('show',y>400);
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hide'), 700);
+  AOS.init({ duration: 850, once: true, offset: 60 });
+  createParticles();
 });
-totop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-document.getElementById('ham').onclick=()=>document.getElementById('menu').classList.toggle('open');
-document.querySelectorAll('.faq-q').forEach(q=>q.onclick=()=>q.parentElement.classList.toggle('open'));
-const counters=document.querySelectorAll('[data-count]');
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){const el=e.target,t=+el.dataset.count;let n=0;const step=t/60;const tk=setInterval(()=>{n+=step;if(n>=t){n=t;clearInterval(tk)}el.textContent=Math.floor(n)+(t>=99?'':'+')},20);io.unobserve(el)}
-}));counters.forEach(c=>io.observe(c));
+
+// Particles
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    container.appendChild(p);
+  }
+}
+
+// Scroll events
+const nav = document.getElementById('nav');
+const progress = document.getElementById('progress');
+const totop = document.getElementById('totop');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (y / h * 100) + '%';
+  nav.classList.toggle('scrolled', y > 40);
+  totop.classList.toggle('show', y > 400);
+});
+
+totop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+// Hamburger
+document.getElementById('ham').onclick = () => {
+  document.getElementById('menu').classList.toggle('open');
+};
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.onclick = () => {
+    const parent = q.parentElement;
+    const isOpen = parent.classList.contains('open');
+    document.querySelectorAll('.faq').forEach(f => f.classList.remove('open'));
+    if (!isOpen) parent.classList.add('open');
+  };
+});
+
+// Counter animation
+const counters = document.querySelectorAll('[data-count]');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = +el.dataset.count;
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+      }, 20);
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => io.observe(c));
+
+// Newsletter
+function handleSubscribe() {
+  const input = document.getElementById('nl-email');
+  if (input.value && input.checkValidity()) {
+    input.value = '';
+    const btn = document.querySelector('.nl-form .btn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+    btn.style.background = '#10b981';
+    btn.style.color = '#fff';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 3000);
+  }
+}
 </script>
 </body>
 </html>

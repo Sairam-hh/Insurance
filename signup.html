@@ -62,6 +62,10 @@ a{text-decoration:none;color:inherit}
 .toast.err i{color:#ef4444}
 
 @media(max-width:880px){.wrap{grid-template-columns:1fr}.side{display:none}.form{padding:36px 26px}}
+.logo{
+  border-radius:8px;
+}
+.logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
 </style></head><body>
 <div class="shape a"></div><div class="shape b"></div>
 <div class="wrap">
@@ -81,15 +85,17 @@ a{text-decoration:none;color:inherit}
 </form>
 <div class="divider">or sign up with</div>
 <div class="socials">
-<button title="Google"><i class="fab fa-google"></i></button>
-<button title="Facebook"><i class="fab fa-facebook-f"></i></button>
-<button title="Twitter"><i class="fab fa-twitter"></i></button>
-<button title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+<button onclick="errorPage()" title="Google"><i class="fab fa-google"></i></button>
+<button onclick="errorPage()" title="Facebook"><i class="fab fa-facebook-f"></i></button>
+<button onclick="errorPage()" title="Twitter"><i class="fab fa-twitter"></i></button>
+<button onclick="errorPage()" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
 </div>
 <div class="login-link">Already have an account? <a href="login.html">Sign in</a></div>
 </div>
 <div class="side">
-<div class="logo"> STACKLY</div>
+<a href="index.html">
+      <img src="./gallery/stackly-darkBlue-color.png" alt="grocery store Logo" class="logo-img">
+  </a>
 <h2>Start Your Journey</h2>
 <p>Join India's most loved insurance platform and secure what matters most — in minutes, not days.</p>
 <ul>
@@ -131,4 +137,8 @@ users.push({role:f.role.value,fullName:f.name.value.trim(),email:f.email.value.t
 localStorage.setItem('ss_users',JSON.stringify(users));
 toast('Account created! Redirecting to login…');
 setTimeout(()=>location.href='login.html',1100)});
+
+function errorPage(){
+    window.location.href = "404.html";
+}
 </script></body></html>

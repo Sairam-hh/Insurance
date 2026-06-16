@@ -62,11 +62,17 @@ a{text-decoration:none;color:inherit}
 .toast.err i{color:#ef4444}
 
 @media(max-width:880px){.wrap{grid-template-columns:1fr}.side{display:none}.form{padding:40px 28px}}
+.logo{
+  border-radius:8px;
+}
+.logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
 </style></head><body>
 <div class="shape a"></div><div class="shape b"></div>
 <div class="wrap">
 <div class="side">
-<div class="logo"> STACKLY</div>
+<a href="index.html">
+      <img src="./gallery/stackly-darkBlue-color.png" alt="grocery store Logo" class="logo-img">
+  </a>
 <h2>Welcome Back!</h2>
 <p>Sign in to access your dashboard, manage policies, and track claims — all in one place.</p>
 <ul>
@@ -89,10 +95,10 @@ a{text-decoration:none;color:inherit}
 </form>
 <div class="divider">or continue with</div>
 <div class="socials">
-<button title="Google"><i class="fab fa-google"></i></button>
-<button title="Facebook"><i class="fab fa-facebook-f"></i></button>
-<button title="Twitter"><i class="fab fa-twitter"></i></button>
-<button title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+<button onclick="errorPage()" title="Google"><i class="fab fa-google"></i></button>
+<button onclick="errorPage()" title="Facebook"><i class="fab fa-facebook-f"></i></button>
+<button onclick="errorPage()" title="Twitter"><i class="fab fa-twitter"></i></button>
+<button onclick="errorPage()" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
 </div>
 <div class="signup-link">Don't have an account? <a href="signup.html">Sign up free</a></div>
 </div></div>
@@ -117,4 +123,8 @@ const fullName=u?u.fullName:(f.role.value==='admin'?'Admin User':'Customer');
 localStorage.setItem('ss_session',JSON.stringify({email:f.email.value.trim(),role:f.role.value,fullName}));
 toast('Login successful! Redirecting…');
 setTimeout(()=>location.href=f.role.value==='admin'?'admin-dashboard.html':'customer-dashboard.html',900)});
+
+function errorPage(){
+    window.location.href = "404.html";
+}
 </script></body></html>
