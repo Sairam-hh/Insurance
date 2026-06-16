@@ -131,8 +131,70 @@ section{padding:88px 0}
 .img-feature .overlay-text h3{color:#fff;font-size:1.9rem;font-weight:800;margin-bottom:12px;line-height:1.2}
 .img-feature .overlay-text p{color:rgba(255,255,255,.88);font-size:1rem;line-height:1.68;max-width:480px}
 .img-feature .overlay-stats{margin-left:auto;display:flex;flex-direction:column;gap:20px;flex-shrink:0}
-.stat-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(12px);border-radius:16px;padding:16px 24px;text-align:center;min-width:130px}
-.stat-pill .sp-num{font-size:1.8rem;font-weight:800;color:#fff;line-height:1}
+.stat-pill{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(12px);
+    border-radius:16px;
+    padding:16px 24px;
+    text-align:center;
+    min-width:130px;
+    transition:all .4s ease;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-pill::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+    transition:.6s;
+}
+
+.stat-pill:hover{
+    transform:translateY(-10px) scale(1.05);
+    background:rgba(255,255,255,.22);
+    border-color:rgba(255,255,255,.45);
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.stat-pill:hover::before{
+    left:100%;
+}
+
+.stat-pill:hover .sp-num{
+    transform:scale(1.1);
+    color:#38bdf8;
+}
+
+.stat-pill:hover .sp-label{
+    color:#fff;
+}
+
+.sp-num{
+    font-size:1.8rem;
+    font-weight:800;
+    color:#fff;
+    line-height:1;
+    transition:.4s;
+}
+
+.sp-label{
+    font-size:12px;
+    color:rgba(255,255,255,.75);
+    margin-top:4px;
+    transition:.4s;
+}.stat-pill .sp-num{font-size:1.8rem;font-weight:800;color:#fff;line-height:1}
 .stat-pill .sp-label{font-size:12px;color:rgba(255,255,255,.75);margin-top:4px}
 
 /* CTA box */
@@ -191,6 +253,76 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
   border-radius:8px;
 }
 .logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
+
+.ps-item{
+    padding:25px 20px;
+    border-radius:20px;
+    transition:all .4s ease;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+.ps-item::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:0;
+    background:rgba(255,255,255,.08);
+    transition:.4s ease;
+    z-index:0;
+}
+
+.ps-item:hover::before{
+    height:100%;
+}
+
+.ps-item:hover{
+    transform:translateY(-12px);
+}
+
+.ps-item>*{
+    position:relative;
+    z-index:1;
+}
+
+.ps-item .ps-num{
+    transition:all .4s ease;
+}
+
+.ps-item:hover .ps-num{
+    background:#fff;
+    color:var(--royal);
+    transform:scale(1.15) rotate(360deg);
+    box-shadow:0 10px 25px rgba(255,255,255,.25);
+}
+
+.ps-item i{
+    transition:all .4s ease;
+}
+
+.ps-item:hover i{
+    transform:scale(1.2);
+    color:#38bdf8;
+}
+
+.ps-item h4{
+    transition:.3s;
+}
+
+.ps-item:hover h4{
+    color:#38bdf8;
+}
+
+.ps-item p{
+    transition:.3s;
+}
+
+.ps-item:hover p{
+    color:#fff;
+}
 </style>
 </head>
 <body>
@@ -206,7 +338,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html">
-        <img src="./gallery/stackly-darkBlue-color.png" alt="grocery store Logo" class="logo-img">
+        <img src="./gallery/stackly-darkBlue-color.webp" alt="grocery store Logo" class="logo-img">
     </a>    
     <ul class="menu" id="menu">
       <li><a href="index.html">Home</a></li>
@@ -256,7 +388,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Life -->
       <div class="serv life" data-aos="fade-up">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&auto=format&fit=crop&q=80" alt="Life Insurance — Indian family">
+          <img src="./gallery/service-page-1.webp" alt="Life Insurance — Indian family">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.9 · 3.1L Reviews</span>
           <div class="ic-float"><i class="fas fa-user-shield"></i></div>
         </div>
@@ -280,7 +412,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Health -->
       <div class="serv health" data-aos="fade-up" data-aos-delay="100">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=80" alt="Health Insurance — Doctor with patient">
+          <img src="./gallery/service-page-2.webp" alt="Health Insurance — Doctor with patient">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.9 · 2.3L Reviews</span>
           <div class="ic-float"><i class="fas fa-heart-pulse"></i></div>
         </div>
@@ -304,7 +436,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Motor -->
       <div class="serv motor" data-aos="fade-up" data-aos-delay="200">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format&fit=crop&q=80" alt="Vehicle Insurance — Car on road">
+          <img src="./gallery/service-page-3.webp" alt="Vehicle Insurance — Car on road">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.8 · 1.8L Reviews</span>
           <div class="ic-float"><i class="fas fa-car"></i></div>
         </div>
@@ -328,7 +460,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Travel -->
       <div class="serv travel" data-aos="fade-up">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=80" alt="Travel Insurance — Airport">
+          <img src="./gallery/service-page-4.webp" alt="Travel Insurance — Airport">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.7 · 90K Reviews</span>
           <div class="ic-float"><i class="fas fa-plane"></i></div>
         </div>
@@ -352,7 +484,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Home -->
       <div class="serv home" data-aos="fade-up" data-aos-delay="100">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&auto=format&fit=crop&q=80" alt="Home Insurance — Beautiful home">
+          <img src="./gallery/service-page-5.webp" alt="Home Insurance — Beautiful home">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.8 · 1.1L Reviews</span>
           <div class="ic-float"><i class="fas fa-house-chimney"></i></div>
         </div>
@@ -376,7 +508,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <!-- Business -->
       <div class="serv biz" data-aos="fade-up" data-aos-delay="200">
         <div class="img-wrap">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Business Insurance — Office team">
+          <img src="./gallery/service-page-6.webp" alt="Business Insurance — Office team">
           <span class="img-label"><i class="fas fa-star" style="color:#f59e0b"></i> 4.9 · 60K Reviews</span>
           <div class="ic-float"><i class="fas fa-briefcase"></i></div>
         </div>
@@ -405,7 +537,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
 <section style="padding-top:0">
   <div class="container">
     <div class="img-feature" data-aos="zoom-in">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&auto=format&fit=crop&q=80" alt="Families protected by SecureShield Insurance">
+      <img src="./gallery/service-page-7.webp" alt="Families protected by SecureShield Insurance">
       <div class="overlay">
         <div class="overlay-text">
           <h3>One Platform. Every Protection You'll Ever Need.</h3>
@@ -511,7 +643,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
     <div class="foot-grid">
       <div class="foot-col">
         <a href="index.html">
-            <img src="./gallery/STACKLY-BLACK-BACKGROUND-COLOR.png" alt="grocery store Logo" class="logo-img">
+            <img src="./gallery/stackly-darkBlue-color.webp" alt="grocery store Logo" class="logo-img">
         </a>
         <p>India's most trusted insurance platform, protecting over 10 million families with reliable, affordable, and fully IRDAI-compliant coverage since 1999.</p>
         <div class="socials">
@@ -540,31 +672,31 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <div class="foot-col">
         <h4>Insurance</h4>
         <ul>
-          <li><a href="#">Health Insurance</a></li>
-          <li><a href="#">Life Insurance</a></li>
-          <li><a href="#">Motor Insurance</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Home Insurance</a></li>
-          <li><a href="#">Business Insurance</a></li>
+          <li><a href="404.html">Health Insurance</a></li>
+          <li><a href="404.html">Life Insurance</a></li>
+          <li><a href="404.html">Motor Insurance</a></li>
+          <li><a href="404.html">Travel Insurance</a></li>
+          <li><a href="404.html">Home Insurance</a></li>
+          <li><a href="404.html">Business Insurance</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Support</h4>
         <ul>
           <li><a href="claims.html">Claims Center</a></li>
-          <li><a href="#">Help & FAQs</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Grievance Redressal</a></li>
+          <li><a href="404.html">Help & FAQs</a></li>
+          <li><a href="404.html">Privacy Policy</a></li>
+          <li><a href="404.html">Terms of Service</a></li>
+          <li><a href="404.html">Grievance Redressal</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
       <span>© 2025 STACKLY Insurance Pvt. Ltd. All rights reserved. · CIN: U66010MH1999PTC123456</span>
       <div style="display:flex;gap:20px">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Sitemap</a>
+        <a href="404.html">Privacy</a>
+        <a href="404.html">Terms</a>
+        <a href="404.html">Sitemap</a>
       </div>
     </div>
   </div>

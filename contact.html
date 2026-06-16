@@ -97,7 +97,18 @@ section{padding:88px 0}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
 .field textarea{min-height:140px;resize:vertical}
 .field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2364748b' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px}
-.field .err{display:none;color:#ef4444;font-size:12px;margin-top:5px;display:flex;align-items:center;gap:4px}
+.field .err{
+  display:none;
+  color:#ef4444;
+  font-size:12px;
+  margin-top:5px;
+  align-items:center;
+  gap:4px;
+}
+
+.field.invalid .err{
+  display:flex;
+}
 .field .err i{font-size:11px}
 .field.invalid input,.field.invalid textarea,.field.invalid select{border-color:#ef4444;background:#fff8f8}
 .field.invalid .err{display:flex}
@@ -118,7 +129,67 @@ section{padding:88px 0}
 .quick-contact{background:#fff;padding:28px;border-radius:22px;box-shadow:0 8px 30px rgba(10,31,68,.07);border:1.5px solid #e8edf4}
 .quick-contact h4{color:var(--navy);font-size:1.05rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px}
 .quick-contact h4 i{color:var(--royal)}
-.qc-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #f1f5f9}
+.qc-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px;
+  border-bottom:1px solid #f1f5f9;
+  border-radius:14px;
+  transition:all .35s ease;
+  cursor:pointer;
+}
+
+.qc-item:last-child{
+  border-bottom:none;
+}
+
+.qc-item:hover{
+  background:linear-gradient(135deg,#eff6ff,#ffffff);
+  transform:translateX(8px);
+  box-shadow:0 10px 25px rgba(37,99,235,.12);
+}
+
+.qc-item .qc-ic{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:rgba(37,99,235,.08);
+  color:var(--royal);
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  flex-shrink:0;
+  transition:.35s;
+}
+
+.qc-item:hover .qc-ic{
+  background:var(--grad);
+  color:#fff;
+  transform:scale(1.12) rotate(-8deg);
+}
+
+.qc-item h5{
+  color:var(--navy);
+  font-size:13.5px;
+  font-weight:600;
+  margin-bottom:2px;
+  transition:.3s;
+}
+
+.qc-item a{
+  color:var(--gray);
+  font-size:13px;
+  transition:.3s;
+}
+
+.qc-item:hover h5{
+  color:var(--royal);
+}
+
+.qc-item:hover a{
+  color:var(--blue);
+}
 .qc-item:last-child{border-bottom:none;padding-bottom:0}
 .qc-item .qc-ic{width:42px;height:42px;border-radius:12px;background:rgba(37,99,235,.08);color:var(--royal);display:grid;place-items:center;font-size:17px;flex-shrink:0}
 .qc-item h5{color:var(--navy);font-size:13.5px;font-weight:600;margin-bottom:2px}
@@ -196,7 +267,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html">
-        <img src="./gallery/stackly-darkBlue-color.png" alt="stackly-insurance" class="logo-img">
+        <img src="./gallery/stackly-darkBlue-color.webp" alt="stackly-insurance" class="logo-img">
     </a>
       <ul class="menu" id="menu">
       <li><a href="index.html">Home</a></li>
@@ -370,11 +441,11 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
           <h4>Follow SecureShield</h4>
           <p>Stay updated with tips, offers & news</p>
           <div class="socials">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
       </div>
@@ -417,7 +488,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
     <div class="foot-grid">
       <div class="foot-col">
         <a href="index.html">
-            <img src="./gallery/STACKLY-BLACK-BACKGROUND-COLOR.png" alt="stackly-insurance" class="logo-img">
+            <img src="./gallery/stackly-darkBlue-color.webp" alt="stackly-insurance" class="logo-img">
         </a>
         <p>India's most trusted insurance platform, protecting over 10 million families with reliable, affordable, and fully IRDAI-compliant coverage since 1999.</p>
         <div class="socials">
@@ -447,30 +518,30 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
         <h4>Insurance</h4>
         <ul>
           <li><a href="#">Health Insurance</a></li>
-          <li><a href="#">Life Insurance</a></li>
-          <li><a href="#">Motor Insurance</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Home Insurance</a></li>
-          <li><a href="#">Business Insurance</a></li>
+          <li><a href="404.html">Life Insurance</a></li>
+          <li><a href="404.html">Motor Insurance</a></li>
+          <li><a href="404.html">Travel Insurance</a></li>
+          <li><a href="404.html">Home Insurance</a></li>
+          <li><a href="404.html">Business Insurance</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Support</h4>
         <ul>
           <li><a href="claims.html">Claims Center</a></li>
-          <li><a href="#">Help & FAQs</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Grievance Redressal</a></li>
+          <li><a href="404.html">Help & FAQs</a></li>
+          <li><a href="404.html">Privacy Policy</a></li>
+          <li><a href="404.html">Terms of Service</a></li>
+          <li><a href="404.html">Grievance Redressal</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
       <span>© 2025 STACKLY Insurance Pvt. Ltd. All rights reserved. · CIN: U66010MH1999PTC123456</span>
       <div style="display:flex;gap:20px">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Sitemap</a>
+        <a href="404.html">Privacy</a>
+        <a href="404.html">Terms</a>
+        <a href="404.html">Sitemap</a>
       </div>
     </div>
   </div>
@@ -517,11 +588,18 @@ function validateField(key) {
   const { el, wrap, re } = fields[key];
   const v = el.value.trim();
   let ok = false;
+
   if (key === 'msg') ok = v.length >= 5;
   else if (key === 'topic') ok = v !== '';
   else ok = v.length > 0 && re.test(v);
-  wrap.classList.toggle('invalid', !ok);
-  wrap.classList.toggle('valid', ok);
+
+  if (v === '') {
+    wrap.classList.remove('valid', 'invalid');
+  } else {
+    wrap.classList.toggle('valid', ok);
+    wrap.classList.toggle('invalid', !ok);
+  }
+
   return ok;
 }
 

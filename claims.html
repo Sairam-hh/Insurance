@@ -65,6 +65,70 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
 
 /* Hero stat pills */
 .hero-stats{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.h-stat{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  border-radius:14px;
+  padding:14px 22px;
+  text-align:center;
+  min-width:120px;
+  transition:all .4s ease;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+
+.h-stat::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.25),
+    transparent
+  );
+  transition:.6s;
+}
+
+.h-stat:hover{
+  transform:translateY(-10px) scale(1.05);
+  background:rgba(255,255,255,.22);
+  border-color:rgba(255,255,255,.4);
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.h-stat:hover::before{
+  left:100%;
+}
+
+.h-stat:hover .hs-num{
+  color:#38bdf8;
+  transform:scale(1.1);
+}
+
+.h-stat:hover .hs-label{
+  color:#fff;
+}
+
+.hs-num{
+  font-size:1.7rem;
+  font-weight:800;
+  color:#fff;
+  line-height:1;
+  transition:.4s;
+}
+
+.hs-label{
+  font-size:12px;
+  color:rgba(255,255,255,.72);
+  margin-top:4px;
+  transition:.4s;
+}
 .h-stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);border-radius:14px;padding:14px 22px;text-align:center;min-width:120px}
 .h-stat .hs-num{font-size:1.7rem;font-weight:800;color:#fff;line-height:1}
 .h-stat .hs-label{font-size:12px;color:rgba(255,255,255,.72);margin-top:4px}
@@ -221,7 +285,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="index.html" class="logo">
-      <img src="./gallery/stackly-darkBlue-color.png" alt="stackly-insurance" class="logo-img">
+      <img src="./gallery/stackly-darkBlue-color.webp" alt="stackly-insurance" class="logo-img">
     </a>    <ul class="menu" id="menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -400,7 +464,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
   <div class="container">
     <div class="illus">
       <div class="illus-img" data-aos="fade-right">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&auto=format&fit=crop&q=80" alt="Fast insurance claim settlement">
+        <img src="./gallery/service-page-1.webp" alt="Fast insurance claim settlement">
         <div class="img-overlay"></div>
         <div class="img-badge">
           <div class="b-ic"><i class="fas fa-bolt"></i></div>
@@ -422,7 +486,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
           <li><div class="li-ic"><i class="fas fa-check"></i></div> Dedicated claim manager assigned to every case</li>
           <li><div class="li-ic"><i class="fas fa-check"></i></div> 24/7 helpline — reach a real expert anytime</li>
         </ul>
-        <a href="login.html" class="btn btn-primary" style="font-size:15px;padding:14px 28px">File a Claim Now <i class="fas fa-arrow-right"></i></a>
+        <a href="404.html" class="btn btn-primary" style="font-size:15px;padding:14px 28px">File a Claim Now <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -490,7 +554,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
         <div class="stars">★★★★★</div>
         <blockquote>"My mother was hospitalised on a Sunday night. I filed the claim online in 3 minutes. By Monday afternoon, the entire ₹2.8 lakh bill was cleared — cashless. I was speechless."</blockquote>
         <div class="who">
-          <img src="https://i.pravatar.cc/100?img=12" alt="Rahul">
+          <img src="./gallery/home-page-3.webp" alt="Rahul">
           <div><h5>Rahul Sharma</h5><span>Delhi · Health Claim · ₹2.8L Settled</span></div>
         </div>
       </div>
@@ -498,7 +562,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
         <div class="stars">★★★★★</div>
         <blockquote>"My car was flooded during the Chennai rains. I uploaded photos of the damage and within 18 hours I got an approval SMS. Workshop bill was paid directly — zero hassle."</blockquote>
         <div class="who">
-          <img src="https://i.pravatar.cc/100?img=32" alt="Kavya">
+          <img src="./gallery/home-page-4.webp" alt="Kavya">
           <div><h5>Kavya Suresh</h5><span>Chennai · Motor Claim · ₹1.4L Settled</span></div>
         </div>
       </div>
@@ -506,7 +570,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
         <div class="stars">★★★★★</div>
         <blockquote>"Our office suffered a burglary. The business claim manager was assigned the same day, verified everything digitally, and settlement was processed in 36 hours. Outstanding."</blockquote>
         <div class="who">
-          <img src="https://i.pravatar.cc/100?img=14" alt="Arjun">
+          <img src="./gallery/home-page-5.webp" alt="Arjun">
           <div><h5>Arjun Mehta</h5><span>Bengaluru · Business Claim · ₹5.2L Settled</span></div>
         </div>
       </div>
@@ -521,8 +585,8 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <h2>Need to File a Claim Right Now?</h2>
       <p>Our team is available 24/7 to guide you through every step. Log in to start your claim or call us — we'll handle the rest.</p>
       <div class="cta-btns">
-        <a href="login.html" class="btn btn-white" style="font-size:15px;padding:14px 28px">File a Claim <i class="fas fa-arrow-right"></i></a>
-        <a href="contact.html" class="btn btn-outline-w" style="font-size:15px;padding:14px 28px"><i class="fas fa-phone"></i> Call 1800-123-4567</a>
+        <a href="404.html" class="btn btn-white" style="font-size:15px;padding:14px 28px">File a Claim <i class="fas fa-arrow-right"></i></a>
+        <a href="404.html" class="btn btn-outline-w" style="font-size:15px;padding:14px 28px"><i class="fas fa-phone"></i> Call 1800-123-4567</a>
       </div>
     </div>
   </div>
@@ -534,7 +598,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
     <div class="foot-grid">
       <div class="foot-col">
         <a href="index.html" class="logo">
-            <img src="./gallery/STACKLY-BLACK-BACKGROUND-COLOR.png" alt="stackly-insurance" class="logo-img">
+            <img src="./gallery/stackly-darkBlue-color.webp" alt="stackly-insurance" class="logo-img">
         </a>          
         <p>India's most trusted insurance platform, protecting over 10 million families with reliable, affordable, and fully IRDAI-compliant coverage since 1999.</p>
         <div class="socials">
@@ -563,31 +627,31 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
       <div class="foot-col">
         <h4>Insurance</h4>
         <ul>
-          <li><a href="#">Health Insurance</a></li>
-          <li><a href="#">Life Insurance</a></li>
-          <li><a href="#">Motor Insurance</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Home Insurance</a></li>
-          <li><a href="#">Business Insurance</a></li>
+          <li><a href="404.html">Health Insurance</a></li>
+          <li><a href="404.html">Life Insurance</a></li>
+          <li><a href="404.html">Motor Insurance</a></li>
+          <li><a href="404.html">Travel Insurance</a></li>
+          <li><a href="404.html">Home Insurance</a></li>
+          <li><a href="404.html">Business Insurance</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Support</h4>
         <ul>
           <li><a href="claims.html">Claims Center</a></li>
-          <li><a href="#">Help & FAQs</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Grievance Redressal</a></li>
+          <li><a href="404.html">Help & FAQs</a></li>
+          <li><a href="404.html">Privacy Policy</a></li>
+          <li><a href="404.html">Terms of Service</a></li>
+          <li><a href="404.html">Grievance Redressal</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
       <span>© 2025 SecureShield Insurance Pvt. Ltd. All rights reserved. · CIN: U66010MH1999PTC123456</span>
       <div style="display:flex;gap:20px">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Sitemap</a>
+        <a href="404.html">Privacy</a>
+        <a href="404.html">Terms</a>
+        <a href="404.html">Sitemap</a>
       </div>
     </div>
   </div>
