@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
   --shadow:0 20px 60px rgba(10,31,68,.15);
   --glass:rgba(255,255,255,.85);
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:#f8fafc;color:#0f172a;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
@@ -91,7 +92,7 @@ a{text-decoration:none;color:inherit}
 .trust-item .dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;flex-shrink:0}
 
 /* Hero right — floating cards */
-.hero-right{position:relative;height:500px}
+.hero-right{position:relative;height:500px;overflow:hidden}
 .fcard{position:absolute;background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.5);border-radius:22px;padding:22px;box-shadow:0 24px 64px rgba(10,31,68,.22);animation:bob 5s ease-in-out infinite}
 .fcard.c1{top:0;left:5%;width:250px;animation-delay:0s}
 .fcard.c2{top:28%;right:0;width:270px;animation-delay:1.5s}
@@ -289,7 +290,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
   .nav-btns .btn-ghost{display:none}
   .fcard.c1{left:0;width:210px}
   .fcard.c2{width:220px}
-  .fcard.c3{left:5%;width:230px}
+  .fcard.c3{left:5%;width:230px}.nl-form{padding:0 8px}
   .cta-box{padding:44px 28px}
   .cta-box h2{font-size:1.8rem}
   .foot-grid{grid-template-columns:1fr}
@@ -301,6 +302,13 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
   border-radius:8px;
 }
 .logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
+@media(max-width:480px){
+  .fcard.c1{width:82vw;left:0}
+  .fcard.c2{width:82vw;right:0}
+  .fcard.c3{width:86vw;left:0}
+  .hero-right{height:420px}
+  .container{padding:0 16px}
+}
 </style>
 </head>
 <body>

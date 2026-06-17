@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sign Up — SecureShield</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
+html,body{overflow-x:hidden}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
 :root{--navy:#0a1f44;--royal:#1e40af;--blue:#2563eb;--sky:#38bdf8;--gray:#64748b;--grad:linear-gradient(135deg,#0a1f44,#1e40af,#2563eb);--shadow:0 30px 80px rgba(10,31,68,.25)}
 body{min-height:100vh;background:var(--grad);display:flex;align-items:center;justify-content:center;padding:20px;color:#0f172a;position:relative;overflow:hidden}
@@ -66,6 +68,10 @@ a{text-decoration:none;color:inherit}
   border-radius:8px;
 }
 .logo-img{width:200px;height:60px;object-fit:contain;margin-bottom:4px;}
+@media(max-width:480px){
+  .form{padding:28px 18px}
+  .wrap{border-radius:20px}
+}
 </style></head><body>
 <div class="shape a"></div><div class="shape b"></div>
 <div class="wrap">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard — SecureShield</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command Center — SecureShield India</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
@@ -19,7 +19,7 @@ a{text-decoration:none;color:inherit}
 .snav li a i{width:18px}
 
 .main{display:flex;flex-direction:column}
-.topbar{background:#fff;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
+.topbar{background:#fff;padding:166px 32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 3px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
 .topbar h1{color:var(--navy);font-size:1.4rem}
 .top-right{display:flex;align-items:center;gap:18px}
 .bell{position:relative;background:#f1f5f9;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--navy);cursor:pointer}
@@ -75,57 +75,57 @@ a{text-decoration:none;color:inherit}
 </style></head><body>
 <div class="layout">
 <aside class="sidebar" id="sb">
-<div class="brand"> STACKLY</div>
-<div class="side-title" id="stitle">Admin Dashboard</div>
+<div class="brand"> SECURESHIELD</div>
+<div class="side-title" id="stitle">Central Operations</div>
 <ul class="snav">
-<li><a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-<li><a href="#"><i class="fas fa-file-contract"></i> Policies</a></li>
-<li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
-<li><a href="#"><i class="fas fa-clipboard-check"></i> Claims</a></li>
-<li><a href="#"><i class="fas fa-chart-pie"></i> Reports</a></li>
-<li><a href="#"><i class="fas fa-gear"></i> Settings</a></li>
-<li><a href="#" id="logout"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
+<li><a href="#" class="active"><i class="fas fa-chart-line"></i> Performance Hub</a></li>
+<li><a href="#"><i class="fas fa-file-contract"></i> Policy Portfolio</a></li>
+<li><a href="#"><i class="fas fa-users"></i> Member Directory</a></li>
+<li><a href="#"><i class="fas fa-clipboard-check"></i> Claim Settlements</a></li>
+<li><a href="#"><i class="fas fa-chart-pie"></i> Strategic Insights</a></li>
+<li><a href="#"><i class="fas fa-gear"></i> System Config</a></li>
+<li><a href="#" id="logout"><i class="fas fa-right-from-bracket"></i> Secure Exit</a></li>
 </ul>
 </aside>
 
 <div class="main">
 <div class="topbar">
-<div style="display:flex;align-items:center;gap:14px"><button class="hamb" id="hamb"><i class="fas fa-bars"></i></button><h1>Admin Dashboard</h1></div>
+<div style="display:flex;align-items:center;gap:14px"><button class="hamb" id="hamb"><i class="fas fa-bars"></i></button><h1>Executive Dashboard</h1></div>
 <div class="top-right">
 <div class="bell"><i class="fas fa-bell"></i></div>
-<div class="user-chip"><div class="av" id="av">A</div><div class="info"><b id="uname">Admin</b><span id="uemail">admin@secureshield.in</span></div></div>
+<div class="user-chip"><div class="av" id="av">S</div><div class="info"><b id="uname">Shield Admin</b><span id="uemail">ops@secureshield.in</span></div></div>
 </div></div>
 
 <div class="content">
 <div class="cards">
-<div class="card"><div class="ic b"><i class="fas fa-file-contract"></i></div><h4>Total Policies</h4><div class="val" data-c="12480">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +12.5% this month</div></div>
-<div class="card"><div class="ic g"><i class="fas fa-users"></i></div><h4>Customers</h4><div class="val" data-c="8642">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +8.2% this month</div></div>
-<div class="card"><div class="ic o"><i class="fas fa-clipboard-check"></i></div><h4>Claims</h4><div class="val" data-c="1320">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +4.7% this month</div></div>
-<div class="card"><div class="ic p"><i class="fas fa-rupee-sign"></i></div><h4>Revenue (₹L)</h4><div class="val" data-c="245">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +18% this month</div></div>
+<div class="card"><div class="ic b"><i class="fas fa-file-contract"></i></div><h4>Active Risk Covers</h4><div class="val" data-c="12480">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +12.5% vs last month</div></div>
+<div class="card"><div class="ic g"><i class="fas fa-users"></i></div><h4>Insured Lives</h4><div class="val" data-c="8642">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +8.2% organic growth</div></div>
+<div class="card"><div class="ic o"><i class="fas fa-clipboard-check"></i></div><h4>Live Claims</h4><div class="val" data-c="1320">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +4.7% processing rate</div></div>
+<div class="card"><div class="ic p"><i class="fas fa-rupee-sign"></i></div><h4>GWP Revenue (₹L)</h4><div class="val" data-c="245">0</div><div class="trend"><i class="fas fa-arrow-up"></i> +18% peak performance</div></div>
 </div>
 
 <div class="grid-2">
 <div class="panel">
-<div class="panel-head"><h3>Revenue Overview</h3><span>Last 7 months</span></div>
+<div class="panel-head"><h3>Revenue Velocity</h3><span>Fiscal Year Trajectory</span></div>
 <div class="chart-wrap"><canvas id="chart"></canvas></div>
 </div>
 <div class="panel">
-<div class="panel-head"><h3>Notifications</h3><span>3 new</span></div>
+<div class="panel-head"><h3>Action Alerts</h3><span>3 Priority Tasks</span></div>
 <ul class="notif">
-<li>New claim filed by Rahul S. — needs review</li>
-<li class="warn">5 policies expiring this week</li>
-<li>Payment received: ₹24,500 from Priya P.</li>
-<li class="err">Failed login attempt blocked</li>
+<li>Urgent: High-value claim by Rahul S. awaiting HQ approval</li>
+<li class="warn">Renewal Warning: 5 Corporate policies nearing grace period</li>
+<li>Remittance: ₹24,500 premium cleared for Priya P.</li>
+<li class="err">Security: Unauthorized access blocked from external IP</li>
 </ul></div></div>
 
 <div class="panel">
-<div class="panel-head"><h3>Recent Activities</h3><span>Today</span></div>
+<div class="panel-head"><h3>Real-time Ecosystem Feed</h3><span>Live Updates</span></div>
 <ul class="activity">
-<li><div class="ic"><i class="fas fa-user-plus"></i></div><div><p>New customer registered: Arjun Mehta</p><span>2 mins ago</span></div></li>
-<li><div class="ic"><i class="fas fa-circle-check"></i></div><div><p>Claim #C-2401 approved for Sneha Roy</p><span>14 mins ago</span></div></li>
-<li><div class="ic"><i class="fas fa-credit-card"></i></div><div><p>Premium payment received from Karan D.</p><span>1 hour ago</span></div></li>
-<li><div class="ic"><i class="fas fa-file-contract"></i></div><div><p>New policy issued: Health Premium</p><span>3 hours ago</span></div></li>
-<li><div class="ic"><i class="fas fa-headset"></i></div><div><p>Support ticket #ST-882 resolved</p><span>5 hours ago</span></div></li>
+<li><div class="ic"><i class="fas fa-user-plus"></i></div><div><p>New Member Acquisition: Arjun Mehta (Platinum Health)</p><span>2 mins ago</span></div></li>
+<li><div class="ic"><i class="fas fa-circle-check"></i></div><div><p>Claim #C-2401 Disbursement Authorized: Sneha Roy</p><span>14 mins ago</span></div></li>
+<li><div class="ic"><i class="fas fa-credit-card"></i></div><div><p>Instant UPI Premium Verified: Karan D.</p><span>1 hour ago</span></div></li>
+<li><div class="ic"><i class="fas fa-file-contract"></i></div><div><p>Policy Underwritten: Comprehensive Family Shield</p><span>3 hours ago</span></div></li>
+<li><div class="ic"><i class="fas fa-headset"></i></div><div><p>Customer Resolution Accomplished: Ticket #ST-882</p><span>5 hours ago</span></div></li>
 </ul></div>
 
 </div></div></div>
@@ -133,7 +133,7 @@ a{text-decoration:none;color:inherit}
 <script>
 const ses=JSON.parse(localStorage.getItem('ss_session')||'null');
 if(!ses||ses.role!=='admin'){location.href='login.html'}
-else{document.getElementById('uname').textContent=ses.fullName||'Admin';document.getElementById('uemail').textContent=ses.email;document.getElementById('av').textContent=(ses.fullName||'A')[0].toUpperCase()}
+else{document.getElementById('uname').textContent=ses.fullName||'Shield Admin';document.getElementById('uemail').textContent=ses.email;document.getElementById('av').textContent=(ses.fullName||'S')[0].toUpperCase()}
 document.getElementById('logout').onclick=e=>{e.preventDefault();localStorage.removeItem('ss_session');location.href='login.html'};
 document.getElementById('hamb').onclick=()=>document.getElementById('sb').classList.toggle('open');
 
