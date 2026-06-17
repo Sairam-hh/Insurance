@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +96,21 @@ section{padding:88px 0}
 .field input,.field textarea,.field select{width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-family:'Poppins',sans-serif;font-size:14.5px;transition:.3s;background:#f8fafc;color:#0f172a}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
 .field textarea{min-height:140px;resize:vertical}
-.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2364748b' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px}
+.field select{display:none}
+.custom-select{position:relative;width:100%}
+.cs-selected{width:100%;padding:13px 44px 13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-family:'Poppins',sans-serif;font-size:14.5px;background:#f8fafc;color:#94a3b8;cursor:pointer;display:flex;align-items:center;transition:.3s;box-sizing:border-box;user-select:none;position:relative}
+.cs-selected .cs-text{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cs-selected .cs-arrow{flex-shrink:0;position:absolute;right:14px;top:50%;transform:translateY(-50%);width:12px;height:12px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2364748b' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:12px;transition:transform .3s}
+.custom-select.open .cs-arrow{transform:translateY(-50%) rotate(180deg)}
+.custom-select.open .cs-selected{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
+.cs-selected.has-value{color:#0f172a}
+.cs-options{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;box-shadow:0 8px 30px rgba(10,31,68,.14);z-index:500;overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .2s ease;pointer-events:none}
+.custom-select.open .cs-options{max-height:280px;opacity:1;pointer-events:auto;overflow-y:auto}
+.cs-option{padding:12px 16px;font-family:'Poppins',sans-serif;font-size:14px;color:#0f172a;cursor:pointer;transition:background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs-option:hover{background:rgba(37,99,235,.06);color:var(--blue)}
+.cs-option.selected{background:rgba(37,99,235,.09);color:var(--blue);font-weight:600}
+.field.invalid .cs-selected{border-color:#ef4444;background:#fff8f8}
+.field.valid .cs-selected{border-color:#10b981}
 .field .err{
   display:none;
   color:#ef4444;
@@ -258,6 +271,10 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
   .cform{padding:24px 16px}
   .cta-box h2{font-size:1.5rem}
 }
+@media(max-width:768px){
+  .field input,.field textarea{font-size:16px}
+  .cs-selected{font-size:16px}
+}
 </style>
 </head>
 <body>
@@ -293,7 +310,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
 
 <!-- PAGE HERO -->
 <header class="page-hero">
-  <video autoplay muted loop playsinline class="page-hero-video" poster="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&auto=format">
+  <video autoplay muted loop playsinline class="page-hero-video" poster="./gallery/home-page-5.webp">
     <source src="https://cdn.coverr.co/videos/coverr-customer-service-representative-3249/1080p.mp4" type="video/mp4">
   </video>
   <div class="ph-shape a"></div>
@@ -381,7 +398,7 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
           </div>
           <div class="field" id="f-topic">
             <label>Topic <span class="req">*</span></label>
-            <select id="topic">
+            <select id="topic" style="display:none">
               <option value="">— Select a topic —</option>
               <option>Health Insurance Enquiry</option>
               <option>Life Insurance Enquiry</option>
@@ -393,6 +410,24 @@ footer{background:#070f24;color:rgba(255,255,255,.65);padding:80px 0 0}
               <option>Policy Renewal</option>
               <option>Other</option>
             </select>
+            <div class="custom-select" id="cs-topic">
+              <div class="cs-selected" id="cs-selected-topic">
+                <span class="cs-text">— Select a topic —</span>
+                <span class="cs-arrow"></span>
+              </div>
+              <div class="cs-options" id="cs-options-topic">
+                <div class="cs-option" data-value="">— Select a topic —</div>
+                <div class="cs-option" data-value="Health Insurance Enquiry">Health Insurance Enquiry</div>
+                <div class="cs-option" data-value="Life Insurance Enquiry">Life Insurance Enquiry</div>
+                <div class="cs-option" data-value="Motor Insurance Enquiry">Motor Insurance Enquiry</div>
+                <div class="cs-option" data-value="Travel Insurance Enquiry">Travel Insurance Enquiry</div>
+                <div class="cs-option" data-value="Home Insurance Enquiry">Home Insurance Enquiry</div>
+                <div class="cs-option" data-value="Business Insurance Enquiry">Business Insurance Enquiry</div>
+                <div class="cs-option" data-value="Claim Status / Help">Claim Status / Help</div>
+                <div class="cs-option" data-value="Policy Renewal">Policy Renewal</div>
+                <div class="cs-option" data-value="Other">Other</div>
+              </div>
+            </div>
             <div class="err"><i class="fas fa-circle-exclamation"></i> Please select a topic.</div>
           </div>
           <div class="field" id="f-msg">
@@ -618,6 +653,46 @@ Object.keys(fields).forEach(k => {
 // Sanitisers
 fields.phone.el.addEventListener('input', e => e.target.value = e.target.value.replace(/\D/g, ''));
 fields.name.el.addEventListener('input', e => e.target.value = e.target.value.replace(/[^A-Za-z ]/g, ''));
+
+// Custom select dropdown
+(function(){
+  const cs = document.getElementById('cs-topic');
+  const selectedEl = document.getElementById('cs-selected-topic');
+  const optionsEl = document.getElementById('cs-options-topic');
+  const nativeSelect = document.getElementById('topic');
+  const textEl = selectedEl.querySelector('.cs-text');
+
+  // Toggle open/close
+  selectedEl.addEventListener('click', function(e){
+    e.stopPropagation();
+    cs.classList.toggle('open');
+  });
+
+  // Select an option
+  optionsEl.querySelectorAll('.cs-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      const val = opt.getAttribute('data-value');
+      // Update native select for form validation
+      nativeSelect.value = val;
+      // Update display
+      textEl.textContent = opt.textContent;
+      selectedEl.classList.toggle('has-value', val !== '');
+      // Mark selected
+      optionsEl.querySelectorAll('.cs-option').forEach(o => o.classList.remove('selected'));
+      if(val !== '') opt.classList.add('selected');
+      // Close
+      cs.classList.remove('open');
+      // Trigger validation
+      nativeSelect.dispatchEvent(new Event('input'));
+      nativeSelect.dispatchEvent(new Event('blur'));
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(){
+    cs.classList.remove('open');
+  });
+})();
 
 // Submit
 document.getElementById('cform').addEventListener('submit', e => {
